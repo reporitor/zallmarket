@@ -1,62 +1,52 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jual Akun Game | GameHub</title>
-   <link rel="stylesheet" href="../css/jual-akun.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jual Akun | GameHub</title>
+  <link rel="stylesheet" href="css/jual-akun.css" />
 </head>
 <body>
-    <!-- Header sama seperti index.html -->
-    
-    <main class="container">
-        <h1 class="section-title">Jual Akun Game Anda</h1>
-        
-        <form id="form-jual" action="../php/jual-akun.php" method="POST">
-            <div class="form-group">
-                <label for="game">Game:</label>
-                <select id="game" name="game" required>
-                    <option value="">Pilih Game</option>
-                    <option value="ff">Free Fire</option>
-                    <option value="ml">Mobile Legends</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="rank">Rank:</label>
-                <input type="text" id="rank" name="rank" required placeholder="Contoh: Mythic">
-            </div>
-            
-            <div class="form-group">
-                <label for="vault">Vault/Item:</label>
-                <textarea id="vault" name="vault" required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="harga">Harga (Rp):</label>
-                <input type="number" id="harga" name="harga" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="screenshot">Screenshot:</label>
-                <input type="file" id="screenshot" name="screenshot" accept="image/*">
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="whatsapp">WhatsApp:</label>
-                <input type="tel" id="whatsapp" name="whatsapp" required>
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Submit Akun</button>
-        </form>
-    </main>
+  <header>
+    <div class="logo">Game<span>Hub</span></div>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="jual-akun.html">Jual Akun</a>
+    </nav>
+  </header>
 
-    <script src="../js/main.js"></script>
-    <script src="../js/form-validation.js"></script> <!-- File baru -->
+  <main>
+    <h1>Formulir Jual Akun Game</h1>
+    <form action="php/jual-akun.php" method="POST" enctype="multipart/form-data">
+      <label for="game">Pilih Game</label>
+      <select id="game" name="game" required>
+        <option value="">-- Pilih --</option>
+        <option value="ff">Free Fire</option>
+        <option value="ml">Mobile Legends</option>
+      </select>
+
+      <label for="rank">Rank Akun</label>
+      <input type="text" id="rank" name="rank" required placeholder="Contoh: Mythic, Heroic" />
+
+      <label for="vault">Deskripsi Akun / Vault</label>
+      <textarea id="vault" name="vault" required></textarea>
+
+      <label for="harga">Harga (Rp)</label>
+      <input type="number" id="harga" name="harga" required />
+
+      <label for="screenshot">Upload Screenshot Akun</label>
+      <input type="file" id="screenshot" name="screenshot" accept="image/*" />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="whatsapp">WhatsApp</label>
+      <input type="tel" id="whatsapp" name="whatsapp" required />
+
+      <button type="submit">Kirim Akun</button>
+    </form>
+  </main>
+
+  <script src="js/jual-akun.js"></script>
 </body>
 </html>
