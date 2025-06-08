@@ -1,0 +1,90 @@
+/* JUAL AKUN PAGE STYLES */
+#form-jual {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--dark);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--dark-gray);
+    background-color: var(--darker);
+    color: var(--light);
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-group input[type="file"] {
+    padding: 0.5rem;
+}
+
+/* Preview Screenshot */
+.screenshot-preview {
+    margin-top: 1rem;
+    display: none;
+}
+
+.screenshot-preview img {
+    max-width: 100%;
+    border-radius: 0.5rem;
+    border: 1px dashed var(--gray);
+}
+
+/* Form Validation */
+.error-message {
+    color: var(--secondary);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+input.error,
+select.error,
+textarea.error {
+    border-color: var(--secondary) !important;
+}
+
+input.error + .error-message,
+select.error + .error-message,
+textarea.error + .error-message {
+    display: block;
+}
+
+/* Success Message */
+.success-message {
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid #10b981;
+    color: #10b981;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    display: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #form-jual {
+        padding: 1.5rem;
+    }
+}
