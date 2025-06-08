@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zsulbar - Jual Beli Akun Game paling aman</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #dc2626;
+            --secondary-dark: #b91c1c;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --dark-gray: #334155;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--light);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-dark);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 50%;
+            height: 0.25rem;
+            background-color: var(--primary);
+            border-radius: 0.25rem;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -0.25rem;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 5rem;
+            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.9), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero-title span {
+            color: var(--primary);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        /* Akun Section */
+        #katalog {
+            padding: 5rem 0;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background-color: var(--dark-gray);
+            color: var(--light);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary);
+        }
+        
+        .filter-btn:hover {
+            background-color: var(--primary);
+        }
+        
+        .akun-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .akun-card {
+            background-color: var(--dark);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        
+        .akun-card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .akun-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .akun-info {
+            padding: 1.5rem;
+        }
+        
+        .akun-game {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-ff {
+            background-color: #f59e0b;
+            color: #1e293b;
+        }
+        
+        .game-ml {
+            background-color: #10b981;
+            color: #1e293b;
+        }
+        
+        .akun-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .akun-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+        
+        .akun-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .akun-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        .akun-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        /* About Section */
+        #about {
+            padding: 5rem 0;
+            background-color: var(--dark);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 2rem;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-col a {
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
+        
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: var(--dark-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-0.25rem);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--dark);
+            z-index: 90;
+            display: none;
+            padding: 0.5rem 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-nav-links {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .mobile-nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
+        
+        .mobile-nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-nav-icon {
+            font-size: 1.25rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-nav {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .filter-buttons {
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .akun-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Game<span>Hub</span></a>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="pages/jual-akun.html">Jual Akun</a></li>
+                    <li><a href="pages/beli-akun.html">Beli Akun</a></li>
+                    <li><a href="pages/portofolio.html">Portofolio</a></li>
+                    <li><a href="pages/kontak.html">Kontak</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Tempat Jual Beli Akun <span>Game Premium</span></h1>
+                <p class="hero-subtitle">Dapatkan akun Free Fire dan Mobile Legends dengan rank tinggi dan vault lengkap dengan harga terbaik di pasar.</p>
+                <div class="hero-buttons">
+                    <a href="pages/beli-akun.html" class="btn btn-primary">Beli Akun</a>
+                    <a href="pages/jual-akun.html" class="btn btn-outline">Jual Akun</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Akun Section -->
+    <section id="katalog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Akun Tersedia</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Semua</button>
+                    <button class="filter-btn" data-filter="ff">Free Fire</button>
+                    <button class="filter-btn" data-filter="ml">Mobile Legends</button>
+                </div>
+            </div>
+            
+            <div class="akun-grid">
+                <!-- Akun 1 -->
+                <div class="akun-card" data-game="ff" data-id="ff001">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Akun Free Fire" class="akun-img">
+                    <div class="akun-info">
+                        <span class="akun-game game-ff">Free Fire</span>
+                        <h3 class="akun-title">Akun Mythic Vault 200+</h3>
+                        <div class="akun-details">
+                            <div class="akun-detail">
+                                <i class="fas fa-trophy"></i>
+                                <span>Rank: Mythic</span>
+                            </div>
+                            <div class="akun-detail">
+                                <i class="fas fa-chess-queen"></i>
+                                <span>Vault: 200+ Item</span>
+                            </div>
+                            <div class="akun-detail">
+                                <i class="fas fa-id-card"></i>
+                                <span>ID: 123456789</span>
+                            </div>
+                        </div>
+                        <div class="akun-price">Rp 1.250.000</div>
+                        <div class="akun-actions">
+                            <a href="php/beli-akun.php?id=ff001" class="btn btn-primary">Beli Sekarang</a>
+                            <a href="https://wa.me/6285246691849?text=Saya%20tertarik%20untuk%20membeli%20akun%20Free%20Fire%20Mythic%20Vault%20200+" class="btn btn-outline">Chat WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Akun 2 -->
+                <div class="akun-card" data-game="ml" data-id="ml001">
+                    <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Akun Mobile Legends" class="akun-img">
+                    <div class="akun-info">
+                        <span class="akun-game game-ml">Mobile Legends</span>
+                        <h3 class="akun-title">Akun Mythic Glory 1000+ Skin</h3>
+                        <div class="akun-details">
+                            <div class="akun-detail">
+                                <i class="fas fa-trophy"></i>
+                                <span>Rank: Mythic Glory</span>
+                            </div>
+                            <div class="akun-detail">
+                                <i class="fas fa-tshirt"></i>
+                                <span>Skin: 1000+</span>
+                            </div>
+                            <div class="akun-detail">
+                                <i class="fas fa-id-card"></i>
+                                <span>ID: 987654321</span>
+                            </div>
+                        </div>
+                        <div class="akun-price">Rp 2.500.000</div>
+                        <div class="akun-actions">
+                            <a href="php/beli-akun.php?id=ml001" class="btn btn-primary">Beli Sekarang</a>
+                            <a href="https://wa.me/6285246691849?text=Saya%20tertarik%20untuk%20membeli%20akun%20Mobile%20Legends%20Mythic%20Glory%201000%2B%20Skin" class="btn btn-outline">Chat WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Akun 3 -->
+                <div class="akun-card" data-game="ff" data-id="ff002">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Akun Free Fire" class="akun-img">
+                    <div class="akun-info">
+                        <span class="akun-game game-ff">Free Fire</span>
+                        <h3 class="akun-title">Akun Diamond Vault 150</h3>
+                        <div class="akun-details">
+                            <div class="akun-detail">
+                                <i class="fas fa-trophy"></i>
+                                <span>Rank: Diamond</span>
+                            </div>
+                            <div class="akun-detail">
+                                <i class="fas fa-chess-queen"></i>
+                                <span>Vault: 150 Item</span>
+                            </div>
+                            <div class="akun-detail">
+                                <i class="fas fa-id-card"></i>
+                                <span>ID: 456789123</span>
+                            </div>
+                        </div>
+                        <div class="akun-price">Rp 850.000</div>
+                        <div class="akun-actions">
+                            <a href="php/beli-akun.php?id=ff002" class="btn btn-primary">Beli Sekarang</a>
+                            <a href="https://wa.me/6285246691849?text=Saya%20tertarik%20untuk%20membeli%20akun%20Free%20Fire%20Diamond%20Vault%20150" class="btn btn-outline">Chat WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Akun 4 -->
+                <div class="akun-card" data-game="ml" data-id="ml002">
+                    <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Akun Mobile Legends" class="akun-img">
+                    <div class="akun-info">
+                        <span class="akun-game game-ml">Mobile Legends</span>
+                        <h3 class="akun-title">Akun Mythic 500+ Skin</h3>
+                        <div class="akun-details">
+                            <div class="akun-detail">
+                                <i class="fas fa-trophy"></i>
+                                <span>Rank: Mythic</span>
+                            </div>
+                            <div class="akun-detail">
+                                <i class="fas fa-tshirt"></i>
+                                <span>Skin: 500+</span>
+                            </div>
+                            <div class="akun-detail">
+                                <i class="fas fa-id-card"></i>
+                                <span>ID: 654321987</span>
+                            </div>
+                        </div>
+                        <div class="akun-price">Rp 1.750.000</div>
+                        <div class="akun-actions">
+                            <a href="php/beli-akun.php?id=ml002" class="btn btn-primary">Beli Sekarang</a>
+                            <a href="https://wa.me/6285246691849?text=Saya%20tertarik%20untuk%20membeli%20akun%20Mobile%20Legends%20Mythic%20500%2B%20Skin" class="btn btn-outline">Chat WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Akun 5 -->
+                <div class="akun-card" data-game="ff" data-id="ff003">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Akun Free Fire" class="akun-img">
+                    <div class="akun-info">
+                        <span class="akun-game game-ff">Free Fire</span>
+                        <h3 class="akun-title">Akun Heroic Vault 300+</h3>
+                        <div class="akun-details">
+                            <div class="akun-detail">
+                                <i class="fas fa-trophy"></i>
+                                <span>Rank: Heroic</span>
+                            </div>
+                            <div class="akun-detail">
+                                <i class="fas fa-chess-queen"></i>
+                                <span>Vault: 300+ Item</span>
+                            </div>
+                            <div class="akun-detail">
+                                <i class="fas fa-id-card"></i>
+                                <span>ID: 789123456</span>
+                            </div>
+                        </div>
+                        <div class="akun-price">Rp 1.800.000</div>
+                        <div class="akun-actions">
+                            <a href="php/beli-akun.php?id=ff003" class="btn btn-primary">Beli Sekarang</a>
+                            <a href="https://wa.me/6285246691849?text=Saya%20tertarik%20untuk%20membeli%20akun%20Free%20Fire%20Heroic%20Vault%20300%2B" class="btn btn-outline">Chat WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Akun 6 -->
+                <div class="akun-card" data-game="ml" data-id="ml003">
+                    <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Akun Mobile Legends" class="akun-img">
+                    <div class="akun-info">
+                        <span class="akun-game game-ml">Mobile Legends</span>
+                        <h3 class="akun-title">Akun Legend 300+ Skin</h3>
+                        <div class="akun-details">
+                            <div class="akun-detail">
+                                <i class="fas fa-trophy"></i>
+                                <span>Rank: Legend</span>
+                            </div>
+                            <div class="akun-detail">
+                                <i class="fas fa-tshirt"></i>
+                                <span>Skin: 300+</span>
+                            </div>
+                            <div class="akun-detail">
+                                <i class="fas fa-id-card"></i>
+                                <span>ID: 321987654</span>
+                            </div>
+                        </div>
+                        <div class="akun-price">Rp 1.200.000</div>
+                        <div class="akun-actions">
+                            <a href="php/beli-akun.php?id=ml003" class="btn btn-primary">Beli Sekarang</a>
+                            <a href="https://wa.me/6285246691849?text=Saya%20tertarik%20untuk%20membeli%20akun%20Mobile%20Legends%20Legend%20300%2B%20Skin" class="btn btn-outline">Chat WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Kami</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>sulbar adalah platform terpercaya untuk jual beli akun game premium seperti Free Fire dan Mobile Legends. Kami menyediakan akun-akun berkualitas tinggi dengan berbagai rank dan item lengkap.</p>
+                    <p>Dengan pengalaman lebih dari 3 tahun di industri game, kami telah membantu ribuan gamers mendapatkan akun impian mereka dengan proses yang aman dan terjamin.</p>
+                    <p>Keamanan transaksi adalah prioritas utama kami. Semua akun yang dijual dijamin original dan bebas dari masalah seperti banned atau recall.</p>
+                    <a href="pages/portofolio.html" class="btn btn-primary">Lihat Portofolio Kami</a>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tentang Kami">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Zsulbar</h3>
+                    <p>Tempat jual beli akun game terpercaya dengan proses aman dan garansi.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Menu</h3>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="pages/jual-akun.html">Jual Akun</a></li>
+                        <li><a href="pages/beli-akun.html">Beli Akun</a></li>
+                        <li><a href="pages/portofolio.html">Portofolio</a></li>
+                        <li><a href="pages/kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Layanan</h3>
+                    <ul>
+                        <li><a href="#">Garansi Akun</a></li>
+                        <li><a href="#">Proses Aman</a></li>
+                        <li><a href="#">Bantuan</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="mailto:info@gamehub.com">info@gZsulbar.com</a></li>
+                        <li><a href="tel:+6281234567890">+62 852 4669 1849</a></li>
+                        <li>Jl. Simboro No. 04, Mamuju</li>
+                        <li>Buka: 09.00 - 21.00 WIB</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zsulbar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <ul class="mobile-nav-links">
+            <li>
+                <a href="index.html" class="mobile-nav-link">
+                    <i class="fas fa-home mobile-nav-icon"></i>
+                    <span>Beranda</span>
+                </a>
+            </li>
+            <li>
+                <a href="pages/jual-akun.html" class="mobile-nav-link">
+                    <i class="fas fa-dollar-sign mobile-nav-icon"></i>
+                    <span>Jual</span>
+                </a>
+            </li>
+            <li>
+                <a href="pages/beli-akun.html" class="mobile-nav-link">
+                    <i class="fas fa-shopping-cart mobile-nav-icon"></i>
+                    <span>Beli</span>
+                </a>
+            </li>
+            <li>
+                <a href="pages/portofolio.html" class="mobile-nav-link">
+                    <i class="fas fa-briefcase mobile-nav-icon"></i>
+                    <span>Portofolio</span>
+                </a>
+            </li>
+            <li>
+                <a href="pages/kontak.html" class="mobile-nav-link">
+                    <i class="fas fa-phone-alt mobile-nav-icon"></i>
+                    <span>Kontak</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Font Awesome for icons (using CDN) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
