@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jual Akun | ZallHosting</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jual.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.png" alt="ZallHosting Logo"></a>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="layanan.html">Layanan</a></li>
+                    <li><a href="jual.html" class="active">Jual Akun</a></li>
+                    <li><a href="beli.html">Beli Akun</a></li>
+                    <li><a href="tentang.html">Tentang Kami</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Masuk</a>
+                <a href="daftar.html" class="btn btn-primary">Daftar</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="jual-page">
+        <section class="hero-jual">
+            <div class="container">
+                <h1>Jual Akun Premium Anda</h1>
+                <p>Dapatkan penghasilan tambahan dengan menjual akun premium Anda di ZallHosting</p>
+                <a href="#form-jual" class="btn btn-primary btn-lg">Mulai Jual Sekarang</a>
+            </div>
+        </section>
+
+        <section class="benefits-section">
+            <div class="container">
+                <h2 class="section-title">Keuntungan Menjual di ZallHosting</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Transaksi Aman</h3>
+                        <p>Sistem escrow kami menjamin keamanan transaksi untuk penjual dan pembeli</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Jangkauan Luas</h3>
+                        <p>Produk Anda akan dilihat oleh ribuan pembeli potensial setiap hari</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Proses Cepat</h3>
+                        <p>Pencairan dana cepat hanya dalam 1x24 jam setelah transaksi sukses</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <h3>Biaya Rendah</h3>
+                        <p>Biaya komisi hanya 5% per transaksi, lebih rendah dari marketplace lain</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-to-section">
+            <div class="container">
+                <h2 class="section-title">Cara Menjual Akun</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Daftar/Login</h3>
+                            <p>Buat akun atau login ke dashboard penjual Anda</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Isi Form Jual</h3>
+                            <p>Lengkapi formulir penjualan dengan detail akun Anda</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Verifikasi Admin</h3>
+                            <p>Tim kami akan memverifikasi akun dalam 1x24 jam</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Akun Dipublikasi</h3>
+                            <p>Akun Anda akan tampil di halaman beli dan siap dibeli</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-jual-section" id="form-jual">
+            <div class="container">
+                <div class="form-wrapper">
+                    <h2 class="section-title">Formulir Penjualan Akun</h2>
+                    <form class="jual-form">
+                        <div class="form-group">
+                            <label for="jenis-akun">Jenis Akun</label>
+                            <select id="jenis-akun" required>
+                                <option value="">Pilih Jenis Akun</option>
+                                <option value="streaming">Streaming (Netflix, Spotify, dll)</option>
+                                <option value="game">Game (Steam, Origin, dll)</option>
+                                <option value="software">Software (Adobe, Microsoft, dll)</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nama-akun">Nama Akun/Produk</label>
+                            <input type="text" id="nama-akun" placeholder="Contoh: Netflix Premium 1 Tahun" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="harga-akun">Harga (Rp)</label>
+                            <input type="number" id="harga-akun" placeholder="Contoh: 250000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="masa-aktif">Masa Aktif</label>
+                            <input type="text" id="masa-aktif" placeholder="Contoh: 1 Tahun, 6 Bulan" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="deskripsi">Deskripsi Akun</label>
+                            <textarea id="deskripsi" rows="5" placeholder="Jelaskan detail akun, spesifikasi, garansi, dll" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="screenshot">Upload Screenshot (Maks 3)</label>
+                            <div class="upload-area">
+                                <input type="file" id="screenshot" accept="image/*" multiple>
+                                <label for="screenshot" class="upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Seret file ke sini atau klik untuk memilih</span>
+                                </label>
+                                <div class="preview-container"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="metode-penyerahan">Metode Penyerahan Akun</label>
+                            <select id="metode-penyerahan" required>
+                                <option value="">Pilih Metode</option>
+                                <option value="email-pass">Email & Password</option>
+                                <option value="voucher">Kode Voucher</option>
+                                <option value="sharing">Sharing Akun</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="setuju-syarat" required>
+                            <label for="setuju-syarat">Saya setuju dengan <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> ZallHosting</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Submit Penjualan</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Pertanyaan Umum</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Berapa lama proses verifikasi akun?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Proses verifikasi biasanya memakan waktu 1x24 jam setelah formulir penjualan diajukan. Kami akan memeriksa kelengkapan data dan keaslian akun yang dijual.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Bagaimana cara mencairkan dana hasil penjualan?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Dana dapat dicairkan melalui transfer bank atau e-wallet. Proses pencairan memakan waktu 1x24 jam setelah pembeli mengkonfirmasi penerimaan akun.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Apakah ada biaya untuk menjual akun di ZallHosting?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Kami mengenakan komisi sebesar 5% dari nilai transaksi yang berhasil. Tidak ada biaya pendaftaran atau biaya bulanan untuk menjadi penjual.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Bagaimana jika akun yang saya jual bermasalah?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Kami memiliki sistem garansi dimana penjual bertanggung jawab atas akun yang dijual. Jika terjadi masalah, dana akan dikembalikan ke pembeli dan akun akan diturunkan dari listing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <!-- Footer sama seperti contoh sebelumnya -->
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/jual.js"></script>
+</body>
+</html>
