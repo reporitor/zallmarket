@@ -1,92 +1,455 @@
-/* BELI AKUN PAGE STYLES */
-.filter-section {
+/* Beli Akun Page Styles */
+.beli-page {
+    padding-bottom: 50px;
+}
+
+.hero-beli {
+    background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hero-beli h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-beli p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.search-bar {
+    max-width: 700px;
+    margin: 0 auto;
     display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+}
+
+.search-bar button {
+    border-radius: 0 5px 5px 0;
+    padding: 0 25px;
+}
+
+.filter-section {
+    background-color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.filter-options {
+    display: flex;
     flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
 }
 
-.filter-section select, 
-.filter-section input {
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    border: 1px solid var(--dark-gray);
-    background-color: var(--dark);
-    color: var(--light);
-    font-family: 'Poppins', sans-serif;
-    min-width: 200px;
+.filter-group {
+    display: flex;
+    align-items: center;
 }
 
-.filter-section input {
-    flex-grow: 1;
-    max-width: 400px;
+.filter-group label {
+    margin-right: 10px;
+    font-weight: 500;
+    color: #555;
 }
 
-/* Pagination Styles */
+.filter-group select {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #3498db;
+    color: #3498db;
+}
+
+.btn-outline:hover {
+    background: #3498db;
+    color: white;
+}
+
+.akun-list {
+    margin-bottom: 50px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+}
+
+.sort-options {
+    display: flex;
+    align-items: center;
+}
+
+.sort-options label {
+    margin-right: 10px;
+    font-weight: 500;
+    color: #555;
+}
+
+.sort-options select {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.akun-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.akun-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.akun-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.akun-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    z-index: 1;
+}
+
+.akun-badge.streaming {
+    background-color: #e74c3c;
+}
+
+.akun-badge.musik {
+    background-color: #1abc9c;
+}
+
+.akun-badge.game {
+    background-color: #9b59b6;
+}
+
+.akun-badge.software {
+    background-color: #3498db;
+}
+
+.akun-badge.lainnya {
+    background-color: #f39c12;
+}
+
+.akun-image {
+    height: 180px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.akun-image img {
+    max-height: 80px;
+    max-width: 80%;
+    object-fit: contain;
+}
+
+.akun-rating {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.akun-rating i {
+    color: #f1c40f;
+    margin-right: 5px;
+}
+
+.rating-count {
+    margin-left: 5px;
+    opacity: 0.8;
+}
+
+.akun-details {
+    padding: 20px;
+}
+
+.akun-details h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.akun-description {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.akun-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #95a5a6;
+    margin-bottom: 15px;
+}
+
+.verified {
+    color: #2ecc71;
+}
+
+.akun-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.akun-price .price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.original-price {
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    color: #95a5a6;
+}
+
+.discount {
+    background: #e74c3c;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.btn-sm {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+
 .pagination {
     display: flex;
     justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.page-item {
+    display: inline-flex;
     align-items: center;
-    gap: 1rem;
-    margin-top: 3rem;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: white;
+    color: #7f8c8d;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
 }
 
-.pagination button {
-    padding: 0.5rem 1.5rem;
-    background-color: var(--primary);
+.page-item:hover, .page-item.active {
+    background-color: #3498db;
     color: white;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    border-color: #3498db;
 }
 
-.pagination button:disabled {
-    background-color: var(--dark-gray);
-    cursor: not-allowed;
+.testimonial-section {
+    background: #f8f9fa;
+    padding: 70px 0;
 }
 
-.pagination button:hover:not(:disabled) {
-    background-color: var(--primary-dark);
+.testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
-#page-info {
-    font-weight: 500;
+.testimonial-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Loading State */
-.loading-state {
+.testimonial-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.rating {
+    color: #f1c40f;
+    margin-bottom: 15px;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.author-info h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.author-info span {
+    font-size: 0.8rem;
+    color: #95a5a6;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: white;
+    padding: 60px 0;
     text-align: center;
-    padding: 2rem;
-    color: var(--gray);
 }
 
-/* Empty State */
-.empty-state {
-    text-align: center;
-    padding: 3rem;
-    grid-column: 1 / -1;
+.cta-content h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
 }
 
-.empty-state i {
-    font-size: 3rem;
-    color: var(--gray);
-    margin-bottom: 1rem;
+.cta-content p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.empty-state p {
-    color: var(--gray);
+.btn-lg {
+    padding: 12px 30px;
+    font-size: 1.1rem;
 }
 
-/* Responsive Adjustments */
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .akun-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
 @media (max-width: 768px) {
-    .filter-section {
+    .hero-beli {
+        padding: 60px 0;
+    }
+    
+    .hero-beli h1 {
+        font-size: 2rem;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .search-bar {
         flex-direction: column;
     }
     
-    .filter-section select, 
-    .filter-section input {
+    .search-bar input {
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .search-bar button {
+        border-radius: 5px;
         width: 100%;
-        max-width: 100%;
+    }
+    
+    .filter-options {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-group {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-beli h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-beli p {
+        font-size: 1rem;
+    }
+    
+    .akun-grid {
+        grid-template-columns: 1fr;
     }
 }
