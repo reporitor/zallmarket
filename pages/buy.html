@@ -1,78 +1,91 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>All Stock Game - Profesional</title>
-  <link rel="stylesheet" href="../css/beli.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Akun Game Premium | GameHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<header>
-  <h1>Stock Game Terbaru</h1>
-</header>
-
-<main>
-  <!-- Free Fire Section -->
-  <section id="freefire">
-    <h2>Free Fire</h2>
-    <div class="stock-grid">
-      <article class="game-card" data-name="Akun Free Fire Elite" data-stock="5" data-price="Rp50.000" data-image="https://i.imgur.com/NJWpT4x.jpg">
-        <img src="https://i.imgur.com/NJWpT4x.jpg" alt="Akun Free Fire Elite" />
-        <div class="game-info">
-          <h3>Akun Free Fire Elite</h3>
-          <p>Stok: <span class="stock-count">5</span></p>
-          <p>Harga: <strong>Rp50.000</strong></p>
-          <button class="buy-btn">Beli Sekarang</button>
+    <!-- Simple Header -->
+    <header class="simple-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    <span>GameHub</span>
+                </div>
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Kembali
+                </a>
+            </div>
         </div>
-      </article>
+    </header>
 
-      <article class="game-card" data-name="Akun FF Diamond" data-stock="3" data-price="Rp75.000" data-image="https://i.imgur.com/b7yZlS8.jpg">
-        <img src="https://i.imgur.com/b7yZlS8.jpg" alt="Akun FF Diamond" />
-        <div class="game-info">
-          <h3>Akun FF Diamond</h3>
-          <p>Stok: <span class="stock-count">3</span></p>
-          <p>Harga: <strong>Rp75.000</strong></p>
-          <button class="buy-btn">Beli Sekarang</button>
+    <!-- Stock Section -->
+    <section class="stock-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>Stock Akun Game Premium</h1>
+            </div>
+            
+            <div class="game-filter">
+                <button class="filter-btn active">Semua</button>
+                <button class="filter-btn">Free Fire</button>
+                <button class="filter-btn">Mobile Legends</button>
+                <button class="filter-btn">Valorant</button>
+                <button class="filter-btn">PUBG</button>
+            </div>
+            
+            <div class="stock-grid">
+                <!-- Game Card 1 -->
+                <div class="game-card">
+                    <div class="card-image">
+                        <img src="assets/images/freefire.jpg" alt="Free Fire">
+                        <span class="game-badge">Terlaris</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="game-title">Free Fire VIP Account</h3>
+                        <div class="game-rank">
+                            <i class="fas fa-trophy"></i>
+                            <span>Heroic (Mythic Equivalent)</span>
+                        </div>
+                        <div class="game-price">
+                            <span class="price">Rp 350.000</span>
+                            <span class="stock-info in-stock">
+                                <i class="fas fa-check-circle"></i>
+                                Tersedia: 5
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game Card 2-6 akan sama struktur nya -->
+                <!-- ... -->
+                
+            </div>
         </div>
-      </article>
-    </div>
-  </section>
+    </section>
 
-  <!-- Mobile Legends Section -->
-  <section id="mobilelegend">
-    <h2>Mobile Legends</h2>
-    <div class="stock-grid">
-      <article class="game-card" data-name="Akun ML Mythic" data-stock="4" data-price="Rp60.000" data-image="https://i.imgur.com/PLJK7eD.jpg">
-        <img src="https://i.imgur.com/PLJK7eD.jpg" alt="Akun ML Mythic" />
-        <div class="game-info">
-          <h3>Akun ML Mythic</h3>
-          <p>Stok: <span class="stock-count">4</span></p>
-          <p>Harga: <strong>Rp60.000</strong></p>
-          <button class="buy-btn">Beli Sekarang</button>
+    <!-- Simple Footer -->
+    <footer class="simple-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2023 GameHub - Jual Beli Akun Game Premium</p>
+                <p>Email: cs@gamehub.id | WhatsApp: +62 812-3456-7890</p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
         </div>
-      </article>
+    </footer>
 
-      <article class="game-card" data-name="Akun ML Epic" data-stock="6" data-price="Rp40.000" data-image="https://i.imgur.com/Rx3dZsN.jpg">
-        <img src="https://i.imgur.com/Rx3dZsN.jpg" alt="Akun ML Epic" />
-        <div class="game-info">
-          <h3>Akun ML Epic</h3>
-          <p>Stok: <span class="stock-count">6</span></p>
-          <p>Harga: <strong>Rp40.000</strong></p>
-          <button class="buy-btn">Beli Sekarang</button>
-        </div>
-      </article>
-    </div>
-  </section>
-</main>
-
-<nav class="bottom-nav">
-  <button class="nav-btn active">Home</button>
-  <button class="nav-btn">Informasi</button>
-  <button class="nav-btn">Akun</button>
-</nav>
-
-<script src="script.js"></script>
-
+    <script src="js/script.js"></script>
 </body>
 </html>
