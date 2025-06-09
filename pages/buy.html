@@ -1,317 +1,78 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beli Akun Premium | ZallHosting</title>
-    <!-- Favicon -->
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/beli.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All Stock Game - Profesional</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/images/logo.png" alt="ZallHosting" width="180">
-                </a>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="game-accounts.html" class="active"><i class="fas fa-gamepad"></i> Akun Game</a></li>
-                    <li><a href="hosting.html"><i class="fas fa-server"></i> Hosting</a></li>
-                    <li><a href="voucher.html"><i class="fas fa-ticket-alt"></i> Voucher</a></li>
-                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-                </ul>
-            </nav>
-            <div class="user-actions">
-                <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
-                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
-            </div>
+
+<header>
+  <h1>Stock Game Terbaru</h1>
+</header>
+
+<main>
+  <!-- Free Fire Section -->
+  <section id="freefire">
+    <h2>Free Fire</h2>
+    <div class="stock-grid">
+      <article class="game-card" data-name="Akun Free Fire Elite" data-stock="5" data-price="Rp50.000" data-image="https://i.imgur.com/NJWpT4x.jpg">
+        <img src="https://i.imgur.com/NJWpT4x.jpg" alt="Akun Free Fire Elite" />
+        <div class="game-info">
+          <h3>Akun Free Fire Elite</h3>
+          <p>Stok: <span class="stock-count">5</span></p>
+          <p>Harga: <strong>Rp50.000</strong></p>
+          <button class="buy-btn">Beli Sekarang</button>
         </div>
-    </header>
+      </article>
 
-    <!-- Product Section -->
-    <main class="product-page">
-        <div class="container">
-            <div class="breadcrumb">
-                <a href="index.html">Home</a> &raquo; 
-                <a href="game-accounts.html">Akun Game</a> &raquo; 
-                <span>Valorant Radiant Account</span>
-            </div>
-
-            <div class="product-container">
-                <!-- Product Gallery -->
-                <div class="product-gallery">
-                    <div class="main-image">
-                        <img src="assets/images/products/valorant-radiant.jpg" alt="Valorant Radiant Account" id="zoom-image">
-                    </div>
-                    <div class="thumbnail-container">
-                        <div class="thumbnail active"><img src="assets/images/products/valorant-radiant-1.jpg" alt="Thumbnail 1"></div>
-                        <div class="thumbnail"><img src="assets/images/products/valorant-radiant-2.jpg" alt="Thumbnail 2"></div>
-                        <div class="thumbnail"><img src="assets/images/products/valorant-radiant-3.jpg" alt="Thumbnail 3"></div>
-                    </div>
-                </div>
-
-                <!-- Product Details -->
-                <div class="product-details">
-                    <h1>Valorant Radiant Account - Region Asia</h1>
-                    <div class="product-meta">
-                        <span class="product-id">ID: #VAL-RAD-042</span>
-                        <span class="product-stock"><i class="fas fa-check-circle"></i> Tersedia: 5</span>
-                        <span class="product-sold"><i class="fas fa-fire"></i> Terjual: 28</span>
-                    </div>
-
-                    <div class="price-container">
-                        <span class="current-price">Rp 1.250.000</span>
-                        <span class="original-price">Rp 1.500.000</span>
-                        <span class="discount">16% OFF</span>
-                    </div>
-
-                    <div class="product-description">
-                        <h3>Deskripsi Produk:</h3>
-                        <ul>
-                            <li>Rank: Radiant (Current Act)</li>
-                            <li>Region: Asia (Singapore Server)</li>
-                            <li>Level: 245</li>
-                            <li>Skin Collection: 15 Premium Skins</li>
-                            <li>Agent Unlocked: All Agents</li>
-                            <li>Battlepass: Current Act Premium Completed</li>
-                            <li>Email Login: Full Access (Email bisa diubah)</li>
-                            <li>Garansi: 30 Hari (Garansi banned replace akun baru)</li>
-                        </ul>
-                    </div>
-
-                    <!-- Order Form -->
-                    <div class="order-form">
-                        <form id="buy-form">
-                            <div class="form-group">
-                                <label for="payment-method">Metode Pembayaran:</label>
-                                <select id="payment-method" class="form-control" required>
-                                    <option value="">Pilih Metode</option>
-                                    <option value="dana">DANA</option>
-                                    <option value="gopay">GoPay</option>
-                                    <option value="ovo">OVO</option>
-                                    <option value="bank-transfer">Transfer Bank</option>
-                                    <option value="qris">QRIS</option>
-                                    <option value="shopee-pay">ShopeePay</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="quantity">Jumlah:</label>
-                                <div class="quantity-selector">
-                                    <button type="button" class="qty-btn minus"><i class="fas fa-minus"></i></button>
-                                    <input type="number" id="quantity" value="1" min="1" max="5" class="qty-input">
-                                    <button type="button" class="qty-btn plus"><i class="fas fa-plus"></i></button>
-                                </div>
-                            </div>
-
-                            <div class="total-price">
-                                <span>Total:</span>
-                                <span id="total-amount">Rp 1.250.000</span>
-                            </div>
-
-                            <div class="action-buttons">
-                                <button type="button" class="btn-add-to-cart">
-                                    <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
-                                </button>
-                                <button type="submit" class="btn-buy-now">
-                                    <i class="fas fa-bolt"></i> Beli Sekarang
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="product-warranty">
-                        <div class="warranty-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Garansi 30 Hari</span>
-                        </div>
-                        <div class="warranty-item">
-                            <i class="fas fa-exchange-alt"></i>
-                            <span>Pengembalian 3 Hari</span>
-                        </div>
-                        <div class="warranty-item">
-                            <i class="fas fa-headset"></i>
-                            <span>Support 24/7</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product Tabs -->
-            <div class="product-tabs">
-                <ul class="tab-nav">
-                    <li class="active" data-tab="tab-details">Detail Produk</li>
-                    <li data-tab="tab-specs">Spesifikasi</li>
-                    <li data-tab="tab-reviews">Ulasan (28)</li>
-                </ul>
-
-                <div class="tab-content">
-                    <div id="tab-details" class="tab-pane active">
-                        <h3>Detail Akun Valorant Radiant</h3>
-                        <p>Akun Valorant premium dengan rank Radiant di current act. Akun ini sangat cocok untuk kamu yang ingin langsung bermain di rank tertinggi tanpa perlu grind dari awal.</p>
-                        <p><strong>Detail Skin:</strong></p>
-                        <ul>
-                            <li>Reaver Vandal</li>
-                            <li>Prime Phantom</li>
-                            <li>Elderflame Operator</li>
-                            <li>Glitchpop Classic</li>
-                            <li>Ion Sheriff</li>
-                            <li>dan 10 skin premium lainnya</li>
-                        </ul>
-                        <p><strong>Catatan:</strong></p>
-                        <ul>
-                            <li>Akun original, bukan hasil hack/cheat</li>
-                            <li>Email login bisa diubah setelah pembelian</li>
-                            <li>Garansi banned 30 hari</li>
-                            <li>Support ganti password setelah pembelian</li>
-                        </ul>
-                    </div>
-
-                    <div id="tab-specs" class="tab-pane">
-                        <h3>Spesifikasi Akun</h3>
-                        <table class="specs-table">
-                            <tr>
-                                <th>Rank</th>
-                                <td>Radiant (Current Act)</td>
-                            </tr>
-                            <tr>
-                                <th>Region</th>
-                                <td>Asia (Singapore Server)</td>
-                            </tr>
-                            <tr>
-                                <th>Level</th>
-                                <td>245</td>
-                            </tr>
-                            <tr>
-                                <th>Agent</th>
-                                <td>Semua Agent Unlocked</td>
-                            </tr>
-                            <tr>
-                                <th>Battlepass</th>
-                                <td>Current Act Premium Completed</td>
-                            </tr>
-                            <tr>
-                                <th>Skin</th>
-                                <td>15 Premium Skins</td>
-                            </tr>
-                            <tr>
-                                <th>Email Access</th>
-                                <td>Full Access (Bisa diubah)</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div id="tab-reviews" class="tab-pane">
-                        <h3>Ulasan Pembeli</h3>
-                        <div class="review-item">
-                            <div class="review-header">
-                                <div class="reviewer">Andi Kurniawan</div>
-                                <div class="review-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="review-date">12 April 2023</div>
-                            </div>
-                            <div class="review-content">
-                                <p>Akun sesuai deskripsi, rank radiant beneran. Skinnya banyak banget dan emailnya bisa diubah. Seller fast respon banget. Recommended!</p>
-                            </div>
-                        </div>
-                        <!-- More reviews would go here -->
-                    </div>
-                </div>
-            </div>
+      <article class="game-card" data-name="Akun FF Diamond" data-stock="3" data-price="Rp75.000" data-image="https://i.imgur.com/b7yZlS8.jpg">
+        <img src="https://i.imgur.com/b7yZlS8.jpg" alt="Akun FF Diamond" />
+        <div class="game-info">
+          <h3>Akun FF Diamond</h3>
+          <p>Stok: <span class="stock-count">3</span></p>
+          <p>Harga: <strong>Rp75.000</strong></p>
+          <button class="buy-btn">Beli Sekarang</button>
         </div>
-    </main>
+      </article>
+    </div>
+  </section>
 
-    <!-- Payment Methods Section -->
-    <section class="payment-methods">
-        <div class="container">
-            <h3>Metode Pembayaran</h3>
-            <div class="payment-icons">
-                <img src="assets/images/payments/dana.png" alt="DANA">
-                <img src="assets/images/payments/gopay.png" alt="GoPay">
-                <img src="assets/images/payments/ovo.png" alt="OVO">
-                <img src="assets/images/payments/qris.png" alt="QRIS">
-                <img src="assets/images/payments/bca.png" alt="BCA">
-                <img src="assets/images/payments/mandiri.png" alt="Mandiri">
-                <img src="assets/images/payments/bri.png" alt="BRI">
-                <img src="assets/images/payments/bni.png" alt="BNI">
-                <img src="assets/images/payments/shopeepay.png" alt="ShopeePay">
-            </div>
+  <!-- Mobile Legends Section -->
+  <section id="mobilelegend">
+    <h2>Mobile Legends</h2>
+    <div class="stock-grid">
+      <article class="game-card" data-name="Akun ML Mythic" data-stock="4" data-price="Rp60.000" data-image="https://i.imgur.com/PLJK7eD.jpg">
+        <img src="https://i.imgur.com/PLJK7eD.jpg" alt="Akun ML Mythic" />
+        <div class="game-info">
+          <h3>Akun ML Mythic</h3>
+          <p>Stok: <span class="stock-count">4</span></p>
+          <p>Harga: <strong>Rp60.000</strong></p>
+          <button class="buy-btn">Beli Sekarang</button>
         </div>
-    </section>
+      </article>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col about">
-                    <img src="assets/images/logo-white.png" alt="ZallHosting" width="160">
-                    <p>ZallHosting menyediakan akun game premium dan layanan hosting terbaik dengan harga terjangkau. Berdiri sejak 2018 dan telah melayani ribuan pelanggan.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-discord"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-col links">
-                    <h4>Layanan</h4>
-                    <ul>
-                        <li><a href="#">Akun Game Premium</a></li>
-                        <li><a href="#">Web Hosting</a></li>
-                        <li><a href="#">Voucher Game</a></li>
-                        <li><a href="#">Top Up Game</a></li>
-                        <li><a href="#">Jasa Boost Rank</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col links">
-                    <h4>Informasi</h4>
-                    <ul>
-                        <li><a href="#">Tentang Kami</a></li>
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col contact">
-                    <h4>Hubungi Kami</h4>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i> cs@zallhosting.biz.id</li>
-                        <li><i class="fas fa-phone"></i> +62 812-3456-7890</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <div class="copyright">
-                    &copy; 2023 ZallHosting.biz.id - All Rights Reserved
-                </div>
-                <div class="payment-methods-small">
-                    <img src="assets/images/payment-methods.png" alt="Payment Methods">
-                </div>
-            </div>
+      <article class="game-card" data-name="Akun ML Epic" data-stock="6" data-price="Rp40.000" data-image="https://i.imgur.com/Rx3dZsN.jpg">
+        <img src="https://i.imgur.com/Rx3dZsN.jpg" alt="Akun ML Epic" />
+        <div class="game-info">
+          <h3>Akun ML Epic</h3>
+          <p>Stok: <span class="stock-count">6</span></p>
+          <p>Harga: <strong>Rp40.000</strong></p>
+          <button class="buy-btn">Beli Sekarang</button>
         </div>
-    </footer>
+      </article>
+    </div>
+  </section>
+</main>
 
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
-    <script src="js/buy.js"></script>
+<nav class="bottom-nav">
+  <button class="nav-btn active">Home</button>
+  <button class="nav-btn">Informasi</button>
+  <button class="nav-btn">Akun</button>
+</nav>
+
+<script src="script.js"></script>
+
 </body>
 </html>
