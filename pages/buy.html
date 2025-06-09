@@ -3,359 +3,316 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beli Akun | ZallHosting</title>
-    <link rel="stylesheet" href="../css/beli.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Beli Akun Premium | ZallHosting</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/buy.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header class="header">
+    <!-- Header -->
+    <header class="main-header">
         <div class="container">
             <div class="logo">
-                <a href="index.html"><img src="img/logo.png" alt="ZallHosting Logo"></a>
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="ZallHosting" width="180">
+                </a>
             </div>
-            <nav class="navbar">
+            <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="layanan.html">Layanan</a></li>
-                    <li><a href="sell.html">Jual Akun</a></li>
-                    <li><a href="buy.html" class="active">Beli Akun</a></li>
-                    <li><a href="tentang.html">Tentang Kami</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="game-accounts.html" class="active"><i class="fas fa-gamepad"></i> Akun Game</a></li>
+                    <li><a href="hosting.html"><i class="fas fa-server"></i> Hosting</a></li>
+                    <li><a href="voucher.html"><i class="fas fa-ticket-alt"></i> Voucher</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
                 </ul>
             </nav>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn btn-outline">Masuk</a>
-                <a href="daftar.html" class="btn btn-primary">Daftar</a>
+            <div class="user-actions">
+                <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
             </div>
         </div>
     </header>
 
-    <main class="beli-page">
-        <section class="hero-beli">
-            <div class="container">
-                <h1>Temukan Akun Premium dengan Harga Terbaik</h1>
-                <p>Ribuan akun premium terverifikasi siap untuk Anda miliki</p>
-                <div class="search-bar">
-                    <input type="text" placeholder="Cari akun (Netflix, Spotify, dll)...">
-                    <button class="btn btn-primary"><i class="fas fa-search"></i> Cari</button>
-                </div>
+    <!-- Product Section -->
+    <main class="product-page">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> &raquo; 
+                <a href="game-accounts.html">Akun Game</a> &raquo; 
+                <span>Valorant Radiant Account</span>
             </div>
-        </section>
 
-        <section class="filter-section">
-            <div class="container">
-                <div class="filter-options">
-                    <div class="filter-group">
-                        <label for="kategori">Kategori:</label>
-                        <select id="kategori">
-                            <option value="semua">Semua Kategori</option>
-                            <option value="streaming">Streaming</option>
-                            <option value="musik">Musik</option>
-                            <option value="game">Game</option>
-                            <option value="software">Software</option>
-                            <option value="lainnya">Lainnya</option>
-                        </select>
+            <div class="product-container">
+                <!-- Product Gallery -->
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img src="assets/images/products/valorant-radiant.jpg" alt="Valorant Radiant Account" id="zoom-image">
                     </div>
-                    <div class="filter-group">
-                        <label for="harga">Harga:</label>
-                        <select id="harga">
-                            <option value="semua">Semua Harga</option>
-                            <option value="murah">Rp0 - Rp50.000</option>
-                            <option value="sedang">Rp50.000 - Rp200.000</option>
-                            <option value="mahal">Rp200.000+</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label for="garansi">Garansi:</label>
-                        <select id="garansi">
-                            <option value="semua">Semua</option>
-                            <option value="1bulan">1 Bulan+</option>
-                            <option value="3bulan">3 Bulan+</option>
-                            <option value="6bulan">6 Bulan+</option>
-                            <option value="1tahun">1 Tahun+</option>
-                        </select>
-                    </div>
-                    <button class="btn btn-outline"><i class="fas fa-filter"></i> Filter</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="akun-list">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Akun Premium Tersedia</h2>
-                    <div class="sort-options">
-                        <label for="sort-by">Urutkan:</label>
-                        <select id="sort-by">
-                            <option value="terbaru">Terbaru</option>
-                            <option value="termurah">Harga Terendah</option>
-                            <option value="termahal">Harga Tertinggi</option>
-                            <option value="terlaris">Terlaris</option>
-                        </select>
+                    <div class="thumbnail-container">
+                        <div class="thumbnail active"><img src="assets/images/products/valorant-radiant-1.jpg" alt="Thumbnail 1"></div>
+                        <div class="thumbnail"><img src="assets/images/products/valorant-radiant-2.jpg" alt="Thumbnail 2"></div>
+                        <div class="thumbnail"><img src="assets/images/products/valorant-radiant-3.jpg" alt="Thumbnail 3"></div>
                     </div>
                 </div>
 
-                <div class="akun-grid">
-                    <!-- Item 1 -->
-                    <div class="akun-card">
-                        <div class="akun-badge streaming">Streaming</div>
-                        <div class="akun-image">
-                            <img src="img/netflix-logo.png" alt="Netflix Premium">
-                            <div class="akun-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.9</span>
-                                <span class="rating-count">(128)</span>
-                            </div>
-                        </div>
-                        <div class="akun-details">
-                            <h3>Netflix Premium 1 Tahun</h3>
-                            <p class="akun-description">Akun Netflix Premium UHD 4 screen. Garansi 1 tahun.</p>
-                            <div class="akun-meta">
-                                <span><i class="fas fa-user"></i> ZallHosting</span>
-                                <span><i class="fas fa-check-circle verified"></i> Terverifikasi</span>
-                            </div>
-                            <div class="akun-price">
-                                <div class="price-info">
-                                    <span class="price">Rp250.000</span>
-                                    <span class="original-price">Rp300.000</span>
-                                    <span class="discount">-17%</span>
-                                </div>
-                                <button class="btn btn-primary btn-sm">Beli Sekarang</button>
-                            </div>
-                        </div>
+                <!-- Product Details -->
+                <div class="product-details">
+                    <h1>Valorant Radiant Account - Region Asia</h1>
+                    <div class="product-meta">
+                        <span class="product-id">ID: #VAL-RAD-042</span>
+                        <span class="product-stock"><i class="fas fa-check-circle"></i> Tersedia: 5</span>
+                        <span class="product-sold"><i class="fas fa-fire"></i> Terjual: 28</span>
                     </div>
 
-                    <!-- Item 2 -->
-                    <div class="akun-card">
-                        <div class="akun-badge musik">Musik</div>
-                        <div class="akun-image">
-                            <img src="img/spotify-logo.png" alt="Spotify Premium">
-                            <div class="akun-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.7</span>
-                                <span class="rating-count">(89)</span>
-                            </div>
-                        </div>
-                        <div class="akun-details">
-                            <h3>Spotify Premium 6 Bulan</h3>
-                            <p class="akun-description">Akun Spotify Premium Family. Garansi 6 bulan.</p>
-                            <div class="akun-meta">
-                                <span><i class="fas fa-user"></i> User123</span>
-                                <span><i class="fas fa-check-circle verified"></i> Terverifikasi</span>
-                            </div>
-                            <div class="akun-price">
-                                <div class="price-info">
-                                    <span class="price">Rp120.000</span>
-                                </div>
-                                <button class="btn btn-primary btn-sm">Beli Sekarang</button>
-                            </div>
-                        </div>
+                    <div class="price-container">
+                        <span class="current-price">Rp 1.250.000</span>
+                        <span class="original-price">Rp 1.500.000</span>
+                        <span class="discount">16% OFF</span>
                     </div>
 
-                    <!-- Item 3 -->
-                    <div class="akun-card">
-                        <div class="akun-badge game">Game</div>
-                        <div class="akun-image">
-                            <img src="img/steam-logo.png" alt="Steam Wallet">
-                            <div class="akun-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.8</span>
-                                <span class="rating-count">(156)</span>
-                            </div>
-                        </div>
-                        <div class="akun-details">
-                            <h3>Steam Wallet $50</h3>
-                            <p class="akun-description">Kode Steam Wallet $50. Bisa digunakan untuk semua game.</p>
-                            <div class="akun-meta">
-                                <span><i class="fas fa-user"></i> GameMaster</span>
-                                <span><i class="fas fa-check-circle verified"></i> Terverifikasi</span>
-                            </div>
-                            <div class="akun-price">
-                                <div class="price-info">
-                                    <span class="price">Rp750.000</span>
-                                    <span class="original-price">Rp800.000</span>
-                                    <span class="discount">-6%</span>
-                                </div>
-                                <button class="btn btn-primary btn-sm">Beli Sekarang</button>
-                            </div>
-                        </div>
+                    <div class="product-description">
+                        <h3>Deskripsi Produk:</h3>
+                        <ul>
+                            <li>Rank: Radiant (Current Act)</li>
+                            <li>Region: Asia (Singapore Server)</li>
+                            <li>Level: 245</li>
+                            <li>Skin Collection: 15 Premium Skins</li>
+                            <li>Agent Unlocked: All Agents</li>
+                            <li>Battlepass: Current Act Premium Completed</li>
+                            <li>Email Login: Full Access (Email bisa diubah)</li>
+                            <li>Garansi: 30 Hari (Garansi banned replace akun baru)</li>
+                        </ul>
                     </div>
 
-                    <!-- Item 4 -->
-                    <div class="akun-card">
-                        <div class="akun-badge software">Software</div>
-                        <div class="akun-image">
-                            <img src="img/adobe-logo.png" alt="Adobe Creative Cloud">
-                            <div class="akun-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.6</span>
-                                <span class="rating-count">(72)</span>
+                    <!-- Order Form -->
+                    <div class="order-form">
+                        <form id="buy-form">
+                            <div class="form-group">
+                                <label for="payment-method">Metode Pembayaran:</label>
+                                <select id="payment-method" class="form-control" required>
+                                    <option value="">Pilih Metode</option>
+                                    <option value="dana">DANA</option>
+                                    <option value="gopay">GoPay</option>
+                                    <option value="ovo">OVO</option>
+                                    <option value="bank-transfer">Transfer Bank</option>
+                                    <option value="qris">QRIS</option>
+                                    <option value="shopee-pay">ShopeePay</option>
+                                </select>
                             </div>
-                        </div>
-                        <div class="akun-details">
-                            <h3>Adobe Creative Cloud 1 Tahun</h3>
-                            <p class="akun-description">Akun Adobe CC All Apps. Garansi 1 tahun.</p>
-                            <div class="akun-meta">
-                                <span><i class="fas fa-user"></i> DesignPro</span>
-                                <span><i class="fas fa-check-circle verified"></i> Terverifikasi</span>
-                            </div>
-                            <div class="akun-price">
-                                <div class="price-info">
-                                    <span class="price">Rp1.200.000</span>
+
+                            <div class="form-group">
+                                <label for="quantity">Jumlah:</label>
+                                <div class="quantity-selector">
+                                    <button type="button" class="qty-btn minus"><i class="fas fa-minus"></i></button>
+                                    <input type="number" id="quantity" value="1" min="1" max="5" class="qty-input">
+                                    <button type="button" class="qty-btn plus"><i class="fas fa-plus"></i></button>
                                 </div>
-                                <button class="btn btn-primary btn-sm">Beli Sekarang</button>
                             </div>
-                        </div>
+
+                            <div class="total-price">
+                                <span>Total:</span>
+                                <span id="total-amount">Rp 1.250.000</span>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button type="button" class="btn-add-to-cart">
+                                    <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
+                                </button>
+                                <button type="submit" class="btn-buy-now">
+                                    <i class="fas fa-bolt"></i> Beli Sekarang
+                                </button>
+                            </div>
+                        </form>
                     </div>
 
-                    <!-- Item 5 -->
-                    <div class="akun-card">
-                        <div class="akun-badge streaming">Streaming</div>
-                        <div class="akun-image">
-                            <img src="img/disney-logo.png" alt="Disney+ Hotstar">
-                            <div class="akun-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.5</span>
-                                <span class="rating-count">(64)</span>
-                            </div>
+                    <div class="product-warranty">
+                        <div class="warranty-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Garansi 30 Hari</span>
                         </div>
-                        <div class="akun-details">
-                            <h3>Disney+ Hotstar Premium</h3>
-                            <p class="akun-description">Akun Disney+ Hotstar VIP 1 tahun. Garansi full.</p>
-                            <div class="akun-meta">
-                                <span><i class="fas fa-user"></i> StreamKing</span>
-                                <span><i class="fas fa-check-circle verified"></i> Terverifikasi</span>
-                            </div>
-                            <div class="akun-price">
-                                <div class="price-info">
-                                    <span class="price">Rp180.000</span>
-                                    <span class="original-price">Rp200.000</span>
-                                    <span class="discount">-10%</span>
-                                </div>
-                                <button class="btn btn-primary btn-sm">Beli Sekarang</button>
-                            </div>
+                        <div class="warranty-item">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Pengembalian 3 Hari</span>
                         </div>
-                    </div>
-
-                    <!-- Item 6 -->
-                    <div class="akun-card">
-                        <div class="akun-badge lainnya">Lainnya</div>
-                        <div class="akun-image">
-                            <img src="img/office-logo.png" alt="Microsoft 365">
-                            <div class="akun-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.7</span>
-                                <span class="rating-count">(93)</span>
-                            </div>
-                        </div>
-                        <div class="akun-details">
-                            <h3>Microsoft 365 Family</h3>
-                            <p class="akun-description">Akun Microsoft 365 Family 1 tahun. Untuk 6 user.</p>
-                            <div class="akun-meta">
-                                <span><i class="fas fa-user"></i> OfficePro</span>
-                                <span><i class="fas fa-check-circle verified"></i> Terverifikasi</span>
-                            </div>
-                            <div class="akun-price">
-                                <div class="price-info">
-                                    <span class="price">Rp350.000</span>
-                                </div>
-                                <button class="btn btn-primary btn-sm">Beli Sekarang</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pagination">
-                    <a href="#" class="page-item active">1</a>
-                    <a href="#" class="page-item">2</a>
-                    <a href="#" class="page-item">3</a>
-                    <a href="#" class="page-item">4</a>
-                    <a href="#" class="page-item">5</a>
-                    <a href="#" class="page-item next"><i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <section class="testimonial-section">
-            <div class="container">
-                <h2 class="section-title">Apa Kata Pelanggan Kami?</h2>
-                <div class="testimonials">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"Beli akun Netflix di ZallHosting sangat mudah dan aman. Akunnya bekerja sempurna dan harganya lebih murah dari tempat lain."</p>
-                            <div class="testimonial-author">
-                                <img src="img/user1.jpg" alt="User 1">
-                                <div class="author-info">
-                                    <h4>Andi Pratama</h4>
-                                    <span>Beli Netflix Premium</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"Proses pembelian cepat, akun Spotify langsung aktif. Garansi 6 bulan bikin tenang. Pasti akan beli lagi di sini."</p>
-                            <div class="testimonial-author">
-                                <img src="img/user2.jpg" alt="User 2">
-                                <div class="author-info">
-                                    <h4>Sarah Wijaya</h4>
-                                    <span>Beli Spotify Premium</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <p class="testimonial-text">"Steam Wallet $50 yang saya beli berhasil digunakan tanpa masalah. Support responsif ketika saya tanya cara redeemnya."</p>
-                            <div class="testimonial-author">
-                                <img src="img/user3.jpg" alt="User 3">
-                                <div class="author-info">
-                                    <h4>Rizal Fauzi</h4>
-                                    <span>Beli Steam Wallet</span>
-                                </div>
-                            </div>
+                        <div class="warranty-item">
+                            <i class="fas fa-headset"></i>
+                            <span>Support 24/7</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Masih Bingung Memilih Akun?</h2>
-                    <p>Hubungi tim support kami untuk rekomendasi akun premium terbaik sesuai kebutuhan Anda.</p>
-                    <a href="kontak.html" class="btn btn-primary btn-lg">Hubungi Kami</a>
+            <!-- Product Tabs -->
+            <div class="product-tabs">
+                <ul class="tab-nav">
+                    <li class="active" data-tab="tab-details">Detail Produk</li>
+                    <li data-tab="tab-specs">Spesifikasi</li>
+                    <li data-tab="tab-reviews">Ulasan (28)</li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="tab-details" class="tab-pane active">
+                        <h3>Detail Akun Valorant Radiant</h3>
+                        <p>Akun Valorant premium dengan rank Radiant di current act. Akun ini sangat cocok untuk kamu yang ingin langsung bermain di rank tertinggi tanpa perlu grind dari awal.</p>
+                        <p><strong>Detail Skin:</strong></p>
+                        <ul>
+                            <li>Reaver Vandal</li>
+                            <li>Prime Phantom</li>
+                            <li>Elderflame Operator</li>
+                            <li>Glitchpop Classic</li>
+                            <li>Ion Sheriff</li>
+                            <li>dan 10 skin premium lainnya</li>
+                        </ul>
+                        <p><strong>Catatan:</strong></p>
+                        <ul>
+                            <li>Akun original, bukan hasil hack/cheat</li>
+                            <li>Email login bisa diubah setelah pembelian</li>
+                            <li>Garansi banned 30 hari</li>
+                            <li>Support ganti password setelah pembelian</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-specs" class="tab-pane">
+                        <h3>Spesifikasi Akun</h3>
+                        <table class="specs-table">
+                            <tr>
+                                <th>Rank</th>
+                                <td>Radiant (Current Act)</td>
+                            </tr>
+                            <tr>
+                                <th>Region</th>
+                                <td>Asia (Singapore Server)</td>
+                            </tr>
+                            <tr>
+                                <th>Level</th>
+                                <td>245</td>
+                            </tr>
+                            <tr>
+                                <th>Agent</th>
+                                <td>Semua Agent Unlocked</td>
+                            </tr>
+                            <tr>
+                                <th>Battlepass</th>
+                                <td>Current Act Premium Completed</td>
+                            </tr>
+                            <tr>
+                                <th>Skin</th>
+                                <td>15 Premium Skins</td>
+                            </tr>
+                            <tr>
+                                <th>Email Access</th>
+                                <td>Full Access (Bisa diubah)</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="tab-reviews" class="tab-pane">
+                        <h3>Ulasan Pembeli</h3>
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer">Andi Kurniawan</div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-date">12 April 2023</div>
+                            </div>
+                            <div class="review-content">
+                                <p>Akun sesuai deskripsi, rank radiant beneran. Skinnya banyak banget dan emailnya bisa diubah. Seller fast respon banget. Recommended!</p>
+                            </div>
+                        </div>
+                        <!-- More reviews would go here -->
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
 
-    <footer class="footer">
-        <!-- Footer sama seperti contoh sebelumnya -->
+    <!-- Payment Methods Section -->
+    <section class="payment-methods">
+        <div class="container">
+            <h3>Metode Pembayaran</h3>
+            <div class="payment-icons">
+                <img src="assets/images/payments/dana.png" alt="DANA">
+                <img src="assets/images/payments/gopay.png" alt="GoPay">
+                <img src="assets/images/payments/ovo.png" alt="OVO">
+                <img src="assets/images/payments/qris.png" alt="QRIS">
+                <img src="assets/images/payments/bca.png" alt="BCA">
+                <img src="assets/images/payments/mandiri.png" alt="Mandiri">
+                <img src="assets/images/payments/bri.png" alt="BRI">
+                <img src="assets/images/payments/bni.png" alt="BNI">
+                <img src="assets/images/payments/shopeepay.png" alt="ShopeePay">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col about">
+                    <img src="assets/images/logo-white.png" alt="ZallHosting" width="160">
+                    <p>ZallHosting menyediakan akun game premium dan layanan hosting terbaik dengan harga terjangkau. Berdiri sejak 2018 dan telah melayani ribuan pelanggan.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col links">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="#">Akun Game Premium</a></li>
+                        <li><a href="#">Web Hosting</a></li>
+                        <li><a href="#">Voucher Game</a></li>
+                        <li><a href="#">Top Up Game</a></li>
+                        <li><a href="#">Jasa Boost Rank</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col links">
+                    <h4>Informasi</h4>
+                    <ul>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col contact">
+                    <h4>Hubungi Kami</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> cs@zallhosting.biz.id</li>
+                        <li><i class="fas fa-phone"></i> +62 812-3456-7890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2023 ZallHosting.biz.id - All Rights Reserved
+                </div>
+                <div class="payment-methods-small">
+                    <img src="assets/images/payment-methods.png" alt="Payment Methods">
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <!-- JavaScript -->
     <script src="js/script.js"></script>
-    <script src="js/beli.js"></script>
+    <script src="js/buy.js"></script>
 </body>
 </html>
