@@ -1,152 +1,35 @@
+<?php
+require_once __DIR__ . '/../includes/auth.php';
+
+if (isAdminLoggedIn()) {
+    header('Location: dashboard.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jual Akun Game</title>
-    <style>
-        .error { color: red; }
-        .success { color: green; }
-    </style>
+    <title>Login Admin</title>
 </head>
 <body>
-    <h1>Jual Akun Game Anda</h1>
+    <h1>Login Admin</h1>
     
-    <?php if (isset($_GET['success'])): ?>
-        <p class="success">Berhasil dikirim, tunggu admin memproses.</p>
+    <?php if (isset($error)): ?>
+        <p style="color:red;"><?= $error ?></p>
     <?php endif; ?>
     
-    <form id="sellForm" enctype="multipart/form-data">
+    <form method="POST">
         <div>
-            <label>Jenis Game:</label>
-            <select name="game_type" required>
-                <option value="">Pilih Game</option>
-                <option value="Free Fire">Free Fire</option>
-                <option value="Mobile Legends">Mobile Legends</option>
-                <option value="PUBG Mobile">PUBG Mobile</option>
-                <option value="Valorant">Valorant</option>
-                <option value="Lainnya">Lainnya</option>
-            </select>
-            <span id="game_type_error" class="error"></span>
-        </div>
-        
-        <div>
-            <label>Username Akun:</label>
+            <label>Username:</label>
             <input type="text" name="username" required>
-            <span id="username_error" class="error"></span>
         </div>
-        
         <div>
-            <label>Level Akun:</label>
-            <input type="number" name="level" min="1" required>
-            <span id="level_error" class="error"></span>
+            <label>Password:</label>
+            <input type="password" name="password" required>
         </div>
-        
-        <div>
-            <label>Jumlah Skin/Diamond:</label>
-            <input type="text" name="items" required>
-            <span id="items_error" class="error"></span>
-        </div>
-        
-        <div>
-            <label>Status Bind:</label>
-            <select name="bind_status" required>
-                <option value="">Pilih Bind</option>
-                <option value="Gmail">Gmail</option>
-                <option value="Facebook">Facebook</option>
-                <option value="VK">VK</option>
-                <option value="Lainnya">Lainnya</option>
-            </select>
-            <span id="bind_status_error" class="error"></span>
-        </div>
-        
-        <div>
-            <label>Harga Jual (Rp):</label>
-            <input type="number" name="price" min="1000" required>
-            <span id="price_error" class="error"></span>
-        </div>
-        
-        <div>
-            <label>Deskripsi Akun:</label>
-            <textarea name="description" required></textarea>
-            <span id="description_error" class="error"></span>
-        </div>
-        
-        <div>
-            <label>Nomor WhatsApp:</label>
-            <input type="text" name="whatsapp" required placeholder="6281234567890">
-            <span id="whatsapp_error" class="error"></span>
-        </div>
-        
-        <div>
-            <label>Upload Gambar (Minimal 2):</label>
-            <input type="file" name="images[]" multiple accept="image/*" required>
-            <span id="images_error" class="error"></span>
-        </div>
-        
-        <div>
-            <input type="checkbox" name="agree" id="agree" required>
-            <label for="agree">Saya menjamin akun ini milik pribadi.</label>
-            <span id="agree_error" class="error"></span>
-        </div>
-        
-        <button type="submit">Submit</button>
+        <button type="submit" name="login">Login</button>
     </form>
-    
-    <script>
-        document.getElementById('sellForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Reset error messages
-            document.querySelectorAll('.error').forEach(el => el.textContent = '');
-            
-            // Validasi frontend
-            let isValid = true;
-            const formData = new FormData(this);
-            
-            // Validasi required fields
-            const requiredFields = ['game_type', 'username', 'level', 'items', 'bind_status', 'price', 'description', 'whatsapp'];
-            requiredFields.forEach(field => {
-                if (!formData.get(field)) {
-                    document.getElementById(`${field}_error`).textContent = 'Field ini wajib diisi';
-                    isValid = false;
-                }
-            });
-            
-            // Validasi gambar
-            const images = formData.getAll('images');
-            if (images.length < 2) {
-                document.getElementById('images_error').textContent = 'Minimal 2 gambar diperlukan';
-                isValid = false;
-            }
-            
-            // Validasi checkbox
-            if (!formData.get('agree')) {
-                document.getElementById('agree_error').textContent = 'Anda harus menyetujui pernyataan ini';
-                isValid = false;
-            }
-            
-            if (!isValid) return;
-            
-            // Kirim data ke backend
-            try {
-                const response = await fetch('api/submit.php', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    window.location.href = result.redirect;
-                } else {
-                    alert(`Error: ${result.message}`);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Terjadi kesalahan saat mengirim data');
-            }
-        });
-    </script>
 </body>
 </html>
