@@ -1,127 +1,141 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Toggle password visibility
-    const togglePassword = document.querySelector('.toggle-password');
-    const passwordInput = document.querySelector('#loginPassword');
-    
-    if (togglePassword && passwordInput) {
-        togglePassword.addEventListener('click', function() {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
-        });
-    }
-
-    // Image upload preview
+    const form = document.getElementById('sellForm');
     const uploadArea = document.getElementById('uploadArea');
-    const imageInput = document.getElementById('accountImages');
-    const imagePreview = document.getElementById('imagePreview');
-    
-    if (uploadArea && imageInput && imagePreview) {
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.style.borderColor = 'var(--primary)';
-            uploadArea.style.backgroundColor = 'rgba(108, 92, 231, 0.1)';
-        });
+    const previewContainer = document.getElementById('previewContainer');
+    const fileInput = document.getElementById('images');
 
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.style.borderColor = 'var(--light-gray)';
-            uploadArea.style.backgroundColor = '';
-        });
+    // Handle drag and drop
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('dragover');
+    });
 
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.style.borderColor = 'var(--light-gray)';
-            uploadArea.style.backgroundColor = '';
-            
-            if (e.dataTransfer.files.length) {
-                imageInput.files = e.dataTransfer.files;
-                previewImages();
-            }
-        });
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.classList.remove('dragover');
+    });
 
-        imageInput.addEventListener('change', previewImages);
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+        fileInput.files = e.dataTransfer.files;
+        updatePreview();
+    });
 
-        function previewImages() {
-            imagePreview.innerHTML = '';
-            
-            if (imageInput.files.length > 0) {
-                Array.from(imageInput.files).forEach(file => {
-                    if (file.type.match('image.*')) {
-                        const reader = new FileReader();
-                        
-                        reader.onload = function(e) {
-                            const previewItem = document.createElement('div');
-                            previewItem.className = 'image-preview-item';
-                            
-                            const img = document.createElement('img');
-                            img.src = e.target.result;
-                            
-                            const removeBtn = document.createElement('span');
-                            removeBtn.className = 'remove-image';
-                            removeBtn.innerHTML = '&times;';
-                            removeBtn.addEventListener('click', function() {
-                                previewItem.remove();
-                                updateFileList();
-                            });
-                            
-                            previewItem.appendChild(img);
-                            previewItem.appendChild(removeBtn);
-                            imagePreview.appendChild(previewItem);
-                        }
-                        
-                        reader.readAsDataURL(file);
-                    }
-                });
-            }
-        }
-
-        function updateFileList() {
-            const dataTransfer = new DataTransfer();
-            const previewItems = document.querySelectorAll('.image-preview-item');
-            
-            previewItems.forEach(item => {
-                const imgSrc = item.querySelector('img').src;
-                Array.from(imageInput.files).forEach(file => {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        if (e.target.result === imgSrc) {
-                            dataTransfer.items.add(file);
-                        }
-                    };
-                    reader.readAsDataURL(file);
-                });
-            });
-            
-            imageInput.files = dataTransfer.files;
-        }
-    }
+    // Handle file selection
+    fileInput.addEventListener('change', updatePreview);
 
     // Form submission
-    const accountForm = document.getElementById('accountForm');
-    const successModal = document.getElementById('successModal');
-    const closeModal = document.querySelector('.close-modal');
-    
-    if (accountForm && successModal && closeModal) {
-        accountForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Validate form
+        if (!validateForm()) return;
+        
+        // Submit form
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        
+        try {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
             
-            // In a real app, you would send the data to your server here
-            // For demo purposes, we'll just show the success modal
-            successModal.style.display = 'flex';
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData
+            });
             
-            // Reset form after submission (optional)
-            // accountForm.reset();
-            // imagePreview.innerHTML = '';
-        });
+            const result = await response.json();
+            
+            if (result.success) {
+                window.location.href = result.redirect || 'jual-akun.php?success=1';
+            } else {
+                showError(result.message || 'Terjadi kesalahan saat mengirim data');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            showError('Terjadi kesalahan jaringan');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Penawaran';
+        }
+    });
 
-        closeModal.addEventListener('click', function() {
-            successModal.style.display = 'none';
+    // Helper functions
+    function updatePreview() {
+        previewContainer.innerHTML = '';
+        const files = fileInput.files;
+        
+        if (files.length < 2) {
+            document.getElementById('images_error').textContent = 'Minimal 2 gambar diperlukan';
+        } else {
+            document.getElementById('images_error').textContent = '';
+        }
+        
+        Array.from(files).forEach(file => {
+            if (!file.type.startsWith('image/')) return;
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const previewItem = document.createElement('div');
+                previewItem.className = 'preview-item';
+                
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                
+                const removeBtn = document.createElement('span');
+                removeBtn.className = 'remove-btn';
+                removeBtn.innerHTML = '&times;';
+                removeBtn.addEventListener('click', () => removeImage(file.name));
+                
+                previewItem.appendChild(img);
+                previewItem.appendChild(removeBtn);
+                previewContainer.appendChild(previewItem);
+            };
+            reader.readAsDataURL(file);
         });
+    }
 
-        window.addEventListener('click', function(e) {
-            if (e.target === successModal) {
-                successModal.style.display = 'none';
+    function removeImage(filename) {
+        const dt = new DataTransfer();
+        const files = fileInput.files;
+        
+        Array.from(files).forEach(file => {
+            if (file.name !== filename) dt.items.add(file);
+        });
+        
+        fileInput.files = dt.files;
+        updatePreview();
+    }
+
+    function validateForm() {
+        let isValid = true;
+        const requiredFields = form.querySelectorAll('[required]');
+        
+        requiredFields.forEach(field => {
+            const errorElement = document.getElementById(`${field.id}_error`);
+            
+            if (!field.value) {
+                errorElement.textContent = 'Field ini wajib diisi';
+                isValid = false;
+            } else if (field.id === 'images' && field.files.length < 2) {
+                errorElement.textContent = 'Minimal 2 gambar diperlukan';
+                isValid = false;
+            } else {
+                errorElement.textContent = '';
             }
         });
+        
+        return isValid;
+    }
+
+    function showError(message) {
+        const alert = document.createElement('div');
+        alert.className = 'alert error';
+        alert.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+        
+        const statusMessage = document.querySelector('.form-header');
+        statusMessage.insertAdjacentElement('afterend', alert);
+        
+        setTimeout(() => alert.remove(), 5000);
     }
 });
