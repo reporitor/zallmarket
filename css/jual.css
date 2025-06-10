@@ -1,10 +1,11 @@
-/* Variabel & Reset */
+/* Base Styles */
 :root {
     --primary: #4361ee;
     --primary-dark: #3a56d4;
     --secondary: #3f37c9;
     --success: #4cc9f0;
     --danger: #f72585;
+    --warning: #f8961e;
     --light: #f8f9fa;
     --dark: #212529;
     --gray: #6c757d;
@@ -26,41 +27,81 @@ body {
     line-height: 1.6;
 }
 
-/* Container & Header */
 .container {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.form-header {
-    text-align: center;
-    margin-bottom: 2rem;
+/* Header Styles */
+.header {
+    background-color: white;
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.form-header h1 {
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--primary);
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
 }
 
-.form-header p {
+.logo i {
+    font-size: 1.8rem;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.navbar {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar a {
+    text-decoration: none;
     color: var(--gray);
-    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
 }
 
-/* Form Sections */
-.form-section {
+.navbar a:hover {
+    color: var(--primary);
+}
+
+.navbar a.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.sell-form {
     background: white;
     border-radius: var(--border-radius);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
     box-shadow: var(--shadow);
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.form-section h2 {
-    color: var(--secondary);
-    font-size: 1.2rem;
+.sell-form h2 {
+    color: var(--primary);
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
@@ -69,7 +110,7 @@ body {
 
 /* Form Elements */
 .form-group {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-group label {
@@ -77,6 +118,9 @@ body {
     margin-bottom: 0.5rem;
     font-weight: 500;
     color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .form-row {
@@ -88,10 +132,9 @@ body {
     flex: 1;
 }
 
-/* Input Styles */
 input[type="text"],
 input[type="number"],
-input[type="file"],
+input[type="tel"],
 select,
 textarea {
     width: 100%;
@@ -103,8 +146,7 @@ textarea {
     font-family: inherit;
 }
 
-input[type="text"]:focus,
-input[type="number"]:focus,
+input:focus,
 select:focus,
 textarea:focus {
     border-color: var(--primary);
@@ -117,7 +159,7 @@ textarea {
     resize: vertical;
 }
 
-/* Price & Phone Input */
+/* Price and Phone Input */
 .price-input,
 .phone-input {
     display: flex;
@@ -159,17 +201,17 @@ textarea {
     background-color: rgba(67, 97, 238, 0.05);
 }
 
-.upload-icon {
+.upload-content {
     pointer-events: none;
 }
 
-.upload-icon i {
+.upload-content i {
     font-size: 2rem;
     color: var(--primary);
     margin-bottom: 0.5rem;
 }
 
-.upload-icon p {
+.upload-content p {
     color: var(--gray);
     font-size: 0.9rem;
 }
@@ -182,6 +224,11 @@ textarea {
     left: 0;
     opacity: 0;
     cursor: pointer;
+}
+
+.dragover {
+    border-color: var(--primary) !important;
+    background-color: rgba(67, 97, 238, 0.1) !important;
 }
 
 /* Preview Images */
@@ -230,17 +277,18 @@ textarea {
 }
 
 /* Checkbox */
-.checkbox-group {
+.agreement {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
 }
 
-.checkbox-group input[type="checkbox"] {
+.agreement input[type="checkbox"] {
     width: auto;
-    margin-right: 0.8rem;
 }
 
-.checkbox-group label {
+.agreement label {
     margin-bottom: 0;
     font-weight: normal;
     font-size: 0.9rem;
@@ -269,46 +317,88 @@ textarea {
     transform: translateY(-2px);
 }
 
-/* Alerts & Messages */
-.alert {
+.submit-btn:disabled {
+    background-color: var(--gray);
+    cursor: not-allowed;
+}
+
+/* Messages */
+.message {
+    margin-bottom: 1.5rem;
+}
+
+.message-success,
+.message-error {
     padding: 1rem;
     border-radius: var(--border-radius);
-    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.alert.success {
+.message-success {
     background-color: rgba(76, 201, 240, 0.2);
     color: var(--success);
 }
 
-.error-msg {
+.message-error {
+    background-color: rgba(247, 37, 133, 0.2);
+    color: var(--danger);
+}
+
+.error-message {
     color: var(--danger);
     font-size: 0.8rem;
     margin-top: 0.3rem;
     display: block;
 }
 
-/* Responsive */
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: white;
+    margin-top: auto;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .navbar {
+        width: 100%;
+        justify-content: space-around;
+    }
+
     .form-row {
         flex-direction: column;
         gap: 0;
     }
-    
-    .form-header h1 {
-        font-size: 1.8rem;
+
+    .main-content {
+        padding: 1rem;
+    }
+
+    .sell-form {
+        padding: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 0 0.5rem;
+    .navbar {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
     }
-    
-    .form-section {
-        padding: 1rem;
+
+    .navbar a {
+        padding: 0.5rem 0;
     }
 }
