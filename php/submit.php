@@ -1,58 +1,80 @@
 <?php
-require_once __DIR__ . '/../includes/config.php';
-require_once __DIR__ . '/../includes/functions.php';
-
 header('Content-Type: application/json');
 
-$response = ['success' => false, 'message' => ''];
+// Set response defaults
+$response = [
+    'success' => false,
+    'message' => '',
+    'errors' => []
+];
 
 try {
-    // Validasi method
+    // Check request method
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         throw new Exception('Method not allowed', 405);
     }
 
-    // Validasi data
-    $requiredFields = ['game_type', 'username', 'level', 'items', 'bind_status', 'price', 'description', 'whatsapp', 'agree'];
+    // Validate required fields
+    $requiredFields = [
+        'game_type', 'username', 'level', 'items',
+        'bind_status', 'price', 'description', 'whatsapp', 'agree'
+    ];
+
     foreach ($requiredFields as $field) {
         if (empty($_POST[$field])) {
-            throw new Exception("Field $field is required", 400);
+            $response['errors'][$field] = 'Field ini wajib diisi';
         }
     }
 
-    // Validasi gambar
+    // Validate images
     if (count($_FILES['images']['name']) < 2) {
-        throw new Exception('Minimum 2 images required', 400);
+        $response['errors']['images'] = 'Minimal 2 gambar diperlukan';
     }
 
-    // Proses upload gambar
+    // If there are errors, return them
+    if (!empty($response['errors'])) {
+        $response['message'] = 'Terdapat kesalahan pada form';
+        echo json_encode($response);
+        exit;
+    }
+
+    // Process image uploads
     $uploadedImages = [];
+    $uploadDir = __DIR__ . '/../../assets/uploads/';
+
+    // Create upload directory if not exists
+    if (!file_exists($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+
     foreach ($_FILES['images']['tmp_name'] as $key => $tmpName) {
-        if ($_FILES['images']['error'][$key] !== UPLOAD_ERR_OK) {
-            throw new Exception('Error uploading image', 500);
+        // Validate image
+        $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = finfo_file($fileInfo, $tmpName);
+        finfo_close($fileInfo);
+
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+        if (!in_array($mimeType, $allowedTypes)) {
+            throw new Exception('Format gambar tidak valid (hanya JPG, PNG, WEBP)', 400);
         }
 
-        // Validasi tipe file
-        $fileType = strtolower(pathinfo($_FILES['images']['name'][$key], PATHINFO_EXTENSION));
-        if (!in_array($fileType, ['jpg', 'jpeg', 'png'])) {
-            throw new Exception('Invalid image format (only JPG, JPEG, PNG allowed)', 400);
-        }
+        // Generate unique filename
+        $ext = pathinfo($_FILES['images']['name'][$key], PATHINFO_EXTENSION);
+        $filename = 'img_' . uniqid() . '.' . $ext;
+        $destination = $uploadDir . $filename;
 
-        // Generate nama unik
-        $newFilename = uniqid('img_') . '.' . $fileType;
-        $destination = UPLOAD_DIR . $newFilename;
-
+        // Move uploaded file
         if (!move_uploaded_file($tmpName, $destination)) {
-            throw new Exception('Failed to save image', 500);
+            throw new Exception('Gagal menyimpan gambar', 500);
         }
 
-        // Kompres gambar (opsional)
+        // Compress image
         compressImage($destination, $destination, 75);
 
-        $uploadedImages[] = $newFilename;
+        $uploadedImages[] = $filename;
     }
 
-    // Siapkan data untuk disimpan
+    // Prepare account data
     $accountData = [
         'id' => uniqid(),
         'game_type' => htmlspecialchars($_POST['game_type']),
@@ -62,31 +84,53 @@ try {
         'bind_status' => htmlspecialchars($_POST['bind_status']),
         'price' => (float)$_POST['price'],
         'description' => htmlspecialchars($_POST['description']),
-        'whatsapp' => htmlspecialchars($_POST['whatsapp']),
+        'whatsapp' => '62' . ltrim($_POST['whatsapp'], '0'),
         'images' => $uploadedImages,
-        'status' => 'Sedang Dicek',
+        'status' => 'Pending',
         'admin_notes' => '',
-        'submitted_at' => date('Y-m-d H:i:s'),
-        'processed_at' => null
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => null
     ];
 
-    // Simpan ke JSON
-    $accounts = loadJSON('data-akun.json');
-    $accounts[] = $accountData;
-    saveJSON('data-akun.json', $accounts);
+    // Save to JSON file
+    $dataFile = __DIR__ . '/../../data/accounts.json';
+    $accounts = [];
 
+    if (file_exists($dataFile)) {
+        $accounts = json_decode(file_get_contents($dataFile), true);
+    }
+
+    $accounts[] = $accountData;
+    file_put_contents($dataFile, json_encode($accounts, JSON_PRETTY_PRINT));
+
+    // Success response
     $response = [
         'success' => true,
-        'message' => 'Berhasil dikirim, tunggu admin memproses.',
-        'redirect' => BASE_URL . 'jual-akun.html?success=1'
+        'message' => 'Akun berhasil diajukan! Admin akan memverifikasi dalam 1x24 jam.',
+        'redirect' => 'riwayat.html'
     ];
+
 } catch (Exception $e) {
-    $response = [
-        'success' => false,
-        'message' => $e->getMessage(),
-        'code' => $e->getCode()
-    ];
+    http_response_code($e->getCode() ?: 500);
+    $response['message'] = $e->getMessage();
 }
 
 echo json_encode($response);
+
+// Helper function to compress images
+function compressImage($source, $destination, $quality) {
+    $info = getimagesize($source);
+
+    if ($info['mime'] == 'image/jpeg') {
+        $image = imagecreatefromjpeg($source);
+        imagejpeg($image, $destination, $quality);
+    } elseif ($info['mime'] == 'image/png') {
+        $image = imagecreatefrompng($source);
+        imagepng($image, $destination, round(9 * $quality / 100));
+    }
+
+    if (isset($image)) {
+        imagedestroy($image);
+    }
+}
 ?>
