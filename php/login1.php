@@ -2,8 +2,8 @@
 session_start();
 
 // Data admin (dalam produksi, gunakan database)
-$validUsername = 'admin';
-$validPassword = 'password123'; // Dalam produksi, gunakan password hash
+$validUsername = 'zallsulbar';
+$validPassword = 'zallsulbar04'; // Dalam produksi, gunakan password hash
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
