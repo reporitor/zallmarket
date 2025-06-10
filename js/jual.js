@@ -1,78 +1,127 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Image upload preview
-    const fileInput = document.getElementById('screenshot');
-    const previewContainer = document.querySelector('.preview-container');
+    // Toggle password visibility
+    const togglePassword = document.querySelector('.toggle-password');
+    const passwordInput = document.querySelector('#loginPassword');
     
-    if (fileInput) {
-        fileInput.addEventListener('change', function() {
-            previewContainer.innerHTML = '';
-            
-            if (this.files) {
-                const files = Array.from(this.files);
-                
-                // Limit to 3 files
-                const selectedFiles = files.slice(0, 3);
-                
-                selectedFiles.forEach(file => {
-                    if (!file.type.match('image.*')) {
-                        return;
-                    }
-                    
-                    const reader = new FileReader();
-                    
-                    reader.onload = function(e) {
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        previewContainer.appendChild(img);
-                    }
-                    
-                    reader.readAsDataURL(file);
-                });
-            }
+    if (togglePassword && passwordInput) {
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
         });
     }
 
-    // FAQ accordion
-    const faqItems = document.querySelectorAll('.faq-item');
+    // Image upload preview
+    const uploadArea = document.getElementById('uploadArea');
+    const imageInput = document.getElementById('accountImages');
+    const imagePreview = document.getElementById('imagePreview');
     
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        
-        question.addEventListener('click', function() {
-            // Close all other items
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                }
+    if (uploadArea && imageInput && imagePreview) {
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--primary)';
+            uploadArea.style.backgroundColor = 'rgba(108, 92, 231, 0.1)';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = 'var(--light-gray)';
+            uploadArea.style.backgroundColor = '';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--light-gray)';
+            uploadArea.style.backgroundColor = '';
+            
+            if (e.dataTransfer.files.length) {
+                imageInput.files = e.dataTransfer.files;
+                previewImages();
+            }
+        });
+
+        imageInput.addEventListener('change', previewImages);
+
+        function previewImages() {
+            imagePreview.innerHTML = '';
+            
+            if (imageInput.files.length > 0) {
+                Array.from(imageInput.files).forEach(file => {
+                    if (file.type.match('image.*')) {
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(e) {
+                            const previewItem = document.createElement('div');
+                            previewItem.className = 'image-preview-item';
+                            
+                            const img = document.createElement('img');
+                            img.src = e.target.result;
+                            
+                            const removeBtn = document.createElement('span');
+                            removeBtn.className = 'remove-image';
+                            removeBtn.innerHTML = '&times;';
+                            removeBtn.addEventListener('click', function() {
+                                previewItem.remove();
+                                updateFileList();
+                            });
+                            
+                            previewItem.appendChild(img);
+                            previewItem.appendChild(removeBtn);
+                            imagePreview.appendChild(previewItem);
+                        }
+                        
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+        }
+
+        function updateFileList() {
+            const dataTransfer = new DataTransfer();
+            const previewItems = document.querySelectorAll('.image-preview-item');
+            
+            previewItems.forEach(item => {
+                const imgSrc = item.querySelector('img').src;
+                Array.from(imageInput.files).forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        if (e.target.result === imgSrc) {
+                            dataTransfer.items.add(file);
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                });
             });
             
-            // Toggle current item
-            item.classList.toggle('active');
-        });
-    });
+            imageInput.files = dataTransfer.files;
+        }
+    }
 
     // Form submission
-    const jualForm = document.querySelector('.jual-form');
+    const accountForm = document.getElementById('accountForm');
+    const successModal = document.getElementById('successModal');
+    const closeModal = document.querySelector('.close-modal');
     
-    if (jualForm) {
-        jualForm.addEventListener('submit', function(e) {
+    if (accountForm && successModal && closeModal) {
+        accountForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Validate form
-            const jenisAkun = document.getElementById('jenis-akun').value;
-            const namaAkun = document.getElementById('nama-akun').value;
-            const hargaAkun = document.getElementById('harga-akun').value;
-            const setujuSyarat = document.getElementById('setuju-syarat').checked;
+            // In a real app, you would send the data to your server here
+            // For demo purposes, we'll just show the success modal
+            successModal.style.display = 'flex';
             
-            if (!jenisAkun || !namaAkun || !hargaAkun || !setujuSyarat) {
-                alert('Harap lengkapi semua field yang wajib diisi!');
-                return;
+            // Reset form after submission (optional)
+            // accountForm.reset();
+            // imagePreview.innerHTML = '';
+        });
+
+        closeModal.addEventListener('click', function() {
+            successModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(e) {
+            if (e.target === successModal) {
+                successModal.style.display = 'none';
             }
-            
-            // Submit form (simulated)
-            alert('Formulir penjualan berhasil dikirim! Tim kami akan memverifikasi dalam 1x24 jam.');
-            this.reset();
-            previewContainer.innerHTML = '';
         });
     }
 });
