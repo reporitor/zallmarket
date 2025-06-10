@@ -3,208 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jual Akun Game | Zsulbar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/jual.css">
+    <link rel="stylesheet" href="../css/jual.css
+    <title>Jual Akun Game</title>
+    <style>
+        .error { color: red; }
+        .success { color: green; }
+    </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="simple-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-gamepad"></i>
-                    <span>Zsulbar</span>
-                </div>
-                <a href="index.html" class="back-btn">
-                    <i class="fas fa-arrow-left"></i>
-                    Kembali
-                </a>
-            </div>
+    <h1>Jual Akun Game Anda</h1>
+    
+    <?php if (isset($_GET['success'])): ?>
+        <p class="success">Berhasil dikirim, tunggu admin memproses.</p>
+    <?php endif; ?>
+    
+    <form id="sellForm" enctype="multipart/form-data">
+        <div>
+            <label>Jenis Game:</label>
+            <select name="game_type" required>
+                <option value="">Pilih Game</option>
+                <option value="Free Fire">Free Fire</option>
+                <option value="Mobile Legends">Mobile Legends</option>
+                <option value="PUBG Mobile">PUBG Mobile</option>
+                <option value="Valorant">Valorant</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+            <span id="game_type_error" class="error"></span>
         </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="sell-account-section">
-        <div class="container">
-            <div class="section-title">
-                <h1>Jual Akun Game Anda</h1>
-                <p>Isi formulir berikut untuk menjual akun game Anda</p>
-            </div>
-
-            <form id="accountForm" class="account-form">
-                <!-- Game Selection -->
-                <div class="form-group">
-                    <label for="gameType">Pilih Game:</label>
-                    <select id="gameType" name="gameType" required>
-                        <option value="">-- Pilih Game --</option>
-                        <option value="freefire">Free Fire</option>
-                        <option value="mlbb">Mobile Legends</option>
-                        <option value="valorant">Valorant</option>
-                        <option value="pubg">PUBG Mobile</option>
-                        <option value="genshin">Genshin Impact</option>
-                        <option value="other">Lainnya</option>
-                    </select>
-                </div>
-
-                <!-- Account Details -->
-                <div class="form-group">
-                    <label for="accountName">Nama Akun:</label>
-                    <input type="text" id="accountName" name="accountName" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="accountLevel">Level/Rank:</label>
-                    <input type="text" id="accountLevel" name="accountLevel" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="accountPrice">Harga (Rp):</label>
-                    <input type="number" id="accountPrice" name="accountPrice" required>
-                </div>
-
-                <!-- Account Login Details -->
-                <div class="form-group">
-                    <label>Metode Login:</label>
-                    <div class="radio-group">
-                        <label>
-                            <input type="radio" name="loginMethod" value="facebook" required>
-                            <i class="fab fa-facebook"></i> Facebook
-                        </label>
-                        <label>
-                            <input type="radio" name="loginMethod" value="google">
-                            <i class="fab fa-google"></i> Google
-                        </label>
-                        <label>
-                            <input type="radio" name="loginMethod" value="vkontakte">
-                            <i class="fab fa-vk"></i> VKontakte
-                        </label>
-                        <label>
-                            <input type="radio" name="loginMethod" value="other">
-                            Lainnya
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="loginEmail">Email/Username:</label>
-                    <input type="text" id="loginEmail" name="loginEmail" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="loginPassword">Password:</label>
-                    <div class="password-input">
-                        <input type="password" id="loginPassword" name="loginPassword" required>
-                        <button type="button" class="toggle-password">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Account Binding -->
-                <div class="form-group">
-                    <label for="bindingStatus">Status Binding:</label>
-                    <select id="bindingStatus" name="bindingStatus" required>
-                        <option value="">-- Pilih Status --</option>
-                        <option value="unbound">Belum Terikat (Unbound)</option>
-                        <option value="bound">Terikat (Bound)</option>
-                        <option value="can_unbind">Bisa Dilepas</option>
-                    </select>
-                </div>
-
-                <!-- Screenshot Upload -->
-                <div class="form-group">
-                    <label>Upload Screenshot Akun:</label>
-                    <div class="upload-area" id="uploadArea">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Seret & lepas gambar atau klik untuk memilih</p>
-                        <input type="file" id="accountImages" name="accountImages" multiple accept="image/*" required>
-                    </div>
-                    <div class="image-preview" id="imagePreview"></div>
-                </div>
-
-                <!-- Additional Info -->
-                <div class="form-group">
-                    <label for="additionalInfo">Informasi Tambahan:</label>
-                    <textarea id="additionalInfo" name="additionalInfo" rows="4"></textarea>
-                </div>
-
-                <!-- Seller Info -->
-                <div class="form-group">
-                    <label for="sellerName">Nama Penjual:</label>
-                    <input type="text" id="sellerName" name="sellerName" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="sellerWhatsApp">Nomor WhatsApp:</label>
-                    <input type="tel" id="sellerWhatsApp" name="sellerWhatsApp" required>
-                </div>
-
-                <!-- Terms and Submit -->
-                <div class="form-group terms-group">
-                    <label>
-                        <input type="checkbox" name="agreeTerms" required>
-                        Saya menyetujui <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a>
-                    </label>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i> Kirim Penawaran
-                </button>
-            </form>
+        
+        <div>
+            <label>Username Akun:</label>
+            <input type="text" name="username" required>
+            <span id="username_error" class="error"></span>
         </div>
-    </main>
-
-    <!-- Success Modal -->
-    <div class="modal" id="successModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Penawaran Berhasil Dikirim!</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="success-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <p>Terima kasih telah mengirimkan penawaran Anda. Tim kami akan memverifikasi informasi akun Anda.</p>
-                <p>Silakan tunggu konfirmasi melalui WhatsApp dalam waktu 1x24 jam.</p>
+        
+        <div>
+            <label>Level Akun:</label>
+            <input type="number" name="level" min="1" required>
+            <span id="level_error" class="error"></span>
+        </div>
+        
+        <div>
+            <label>Jumlah Skin/Diamond:</label>
+            <input type="text" name="items" required>
+            <span id="items_error" class="error"></span>
+        </div>
+        
+        <div>
+            <label>Status Bind:</label>
+            <select name="bind_status" required>
+                <option value="">Pilih Bind</option>
+                <option value="Gmail">Gmail</option>
+                <option value="Facebook">Facebook</option>
+                <option value="VK">VK</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+            <span id="bind_status_error" class="error"></span>
+        </div>
+        
+        <div>
+            <label>Harga Jual (Rp):</label>
+            <input type="number" name="price" min="1000" required>
+            <span id="price_error" class="error"></span>
+        </div>
+        
+        <div>
+            <label>Deskripsi Akun:</label>
+            <textarea name="description" required></textarea>
+            <span id="description_error" class="error"></span>
+        </div>
+        
+        <div>
+            <label>Nomor WhatsApp:</label>
+            <input type="text" name="whatsapp" required placeholder="6281234567890">
+            <span id="whatsapp_error" class="error"></span>
+        </div>
+        
+        <div>
+            <label>Upload Gambar (Minimal 2):</label>
+            <input type="file" name="images[]" multiple accept="image/*" required>
+            <span id="images_error" class="error"></span>
+        </div>
+        
+        <div>
+            <input type="checkbox" name="agree" id="agree" required>
+            <label for="agree">Saya menjamin akun ini milik pribadi.</label>
+            <span id="agree_error" class="error"></span>
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+    
+    <script>
+        document.getElementById('sellForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Reset error messages
+            document.querySelectorAll('.error').forEach(el => el.textContent = '');
+            
+            // Validasi frontend
+            let isValid = true;
+            const formData = new FormData(this);
+            
+            // Validasi required fields
+            const requiredFields = ['game_type', 'username', 'level', 'items', 'bind_status', 'price', 'description', 'whatsapp'];
+            requiredFields.forEach(field => {
+                if (!formData.get(field)) {
+                    document.getElementById(`${field}_error`).textContent = 'Field ini wajib diisi';
+                    isValid = false;
+                }
+            });
+            
+            // Validasi gambar
+            const images = formData.getAll('images');
+            if (images.length < 2) {
+                document.getElementById('images_error').textContent = 'Minimal 2 gambar diperlukan';
+                isValid = false;
+            }
+            
+            // Validasi checkbox
+            if (!formData.get('agree')) {
+                document.getElementById('agree_error').textContent = 'Anda harus menyetujui pernyataan ini';
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Kirim data ke backend
+            try {
+                const response = await fetch('api/submit.php', {
+                    method: 'POST',
+                    body: formData
+                });
                 
-                <div class="payment-info">
-                    <h3>Informasi Pembayaran:</h3>
-                    <p>Setelah verifikasi selesai, pembayaran akan dilakukan melalui:</p>
-                    <div class="bank-account">
-                        <i class="fas fa-university"></i>
-                        <div>
-                            <strong>Bank BCA</strong>
-                            <p>1234567890</p>
-                            <p>a.n Zsulbar Store</p>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/6285246691849" class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="simple-footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>© 2025 Zsulbar - Jual Beli Akun Game aman dan terpercaya</p>
-                <p>Email: cs@Zsulbar.biz.id | WhatsApp: +62 852 4669 1849</p>
+                const result = await response.json();
                 
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/jual.js"></script>
+                if (result.success) {
+                    window.location.href = result.redirect;
+                } else {
+                    alert(`Error: ${result.message}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat mengirim data');
+            }
+        });
+    </script>
 </body>
 </html>
