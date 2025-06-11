@@ -3,130 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jual Akun Game | GameHub</title>
-    <link rel="stylesheet" href="..//css/beli.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Jual Akun Game - GameHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-gamepad"></i>
-                <h1>GameHub</h1>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">Jual Akun Game</h1>
+        
+        <form id="formJualAkun" class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2" for="game">Jenis Game</label>
+                <select id="game" name="game" class="w-full px-3 py-2 border rounded-md" required>
+                    <option value="">Pilih Game</option>
+                    <option value="Free Fire">Free Fire</option>
+                    <option value="Mobile Legends">Mobile Legends</option>
+                    <option value="PUBG Mobile">PUBG Mobile</option>
+                    <option value="Valorant">Valorant</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
             </div>
-            <nav class="navbar">
-                <a href="index.html"><i class="fas fa-home"></i> Beranda</a>
-                <a href="jual-akun.html" class="active"><i class="fas fa-tag"></i> Jual Akun</a>
-                <a href="riwayat.html"><i class="fas fa-history"></i> Riwayat</a>
-            </nav>
-        </header>
 
-        <main class="main-content">
-            <section class="sell-form">
-                <h2><i class="fas fa-plus-circle"></i> Form Penjualan Akun</h2>
-                
-                <div id="form-message" class="message"></div>
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2" for="username">Username Akun</label>
+                <input type="text" id="username" name="username" class="w-full px-3 py-2 border rounded-md" required>
+            </div>
 
-                <form id="account-form" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="game-type"><i class="fas fa-gamepad"></i> Jenis Game*</label>
-                        <select id="game-type" name="game_type" required>
-                            <option value="">Pilih Game</option>
-                            <option value="Free Fire">Free Fire</option>
-                            <option value="Mobile Legends">Mobile Legends</option>
-                            <option value="PUBG Mobile">PUBG Mobile</option>
-                            <option value="Valorant">Valorant</option>
-                            <option value="Genshin Impact">Genshin Impact</option>
-                        </select>
-                        <span class="error-message" id="game-type-error"></span>
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2" for="level">Level Akun</label>
+                <input type="number" id="level" name="level" class="w-full px-3 py-2 border rounded-md" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2" for="items">Jumlah Skin/Diamond</label>
+                <input type="text" id="items" name="items" class="w-full px-3 py-2 border rounded-md" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Status Bind Akun</label>
+                <div class="flex flex-wrap gap-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="bind" value="Gmail" class="form-radio" required>
+                        <span class="ml-2">Gmail</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="bind" value="Facebook" class="form-radio">
+                        <span class="ml-2">Facebook</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="bind" value="VK" class="form-radio">
+                        <span class="ml-2">VK</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="bind" value="Lainnya" class="form-radio">
+                        <span class="ml-2">Lainnya</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2" for="harga">Harga Jual (Rp)</label>
+                <input type="number" id="harga" name="harga" class="w-full px-3 py-2 border rounded-md" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2" for="deskripsi">Deskripsi Akun</label>
+                <textarea id="deskripsi" name="deskripsi" rows="3" class="w-full px-3 py-2 border rounded-md" required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2" for="whatsapp">Nomor WhatsApp</label>
+                <input type="tel" id="whatsapp" name="whatsapp" class="w-full px-3 py-2 border rounded-md" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Upload Gambar (Minimal 2)</label>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm text-gray-600 mb-1">Gambar Profil Akun</label>
+                        <input type="file" name="gambar_profil" accept="image/*" class="w-full" required>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="username"><i class="fas fa-user"></i> Username*</label>
-                            <input type="text" id="username" name="username" required>
-                            <span class="error-message" id="username-error"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="level"><i class="fas fa-level-up-alt"></i> Level*</label>
-                            <input type="number" id="level" name="level" min="1" required>
-                            <span class="error-message" id="level-error"></span>
-                        </div>
+                    <div>
+                        <label class="block text-sm text-gray-600 mb-1">Gambar Lain (Skin/Dll)</label>
+                        <input type="file" name="gambar_lain" accept="image/*" class="w-full" required>
                     </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Format: JPG/PNG, Maksimal 2MB per gambar</p>
+            </div>
 
-                    <div class="form-group">
-                        <label for="items"><i class="fas fa-gem"></i> Jumlah Skin/Diamond*</label>
-                        <input type="text" id="items" name="items" placeholder="Contoh: 50 Skin, 1000 Diamond" required>
-                        <span class="error-message" id="items-error"></span>
-                    </div>
+            <div class="mb-6">
+                <label class="flex items-start">
+                    <input type="checkbox" name="persetujuan" class="mt-1 form-checkbox" required>
+                    <span class="ml-2 text-gray-700">Saya menjamin akun ini milik pribadi dan tidak melanggar ketentuan game</span>
+                </label>
+            </div>
 
-                    <div class="form-group">
-                        <label for="bind-status"><i class="fas fa-link"></i> Status Bind*</label>
-                        <select id="bind-status" name="bind_status" required>
-                            <option value="">Pilih Bind</option>
-                            <option value="Gmail">Gmail</option>
-                            <option value="Facebook">Facebook</option>
-                            <option value="VK">VK</option>
-                            <option value="Apple ID">Apple ID</option>
-                        </select>
-                        <span class="error-message" id="bind-status-error"></span>
-                    </div>
+            <div id="error-message" class="mb-4 text-red-600 hidden"></div>
 
-                    <div class="form-group">
-                        <label for="price"><i class="fas fa-tag"></i> Harga (Rp)*</label>
-                        <div class="price-input">
-                            <span>Rp</span>
-                            <input type="number" id="price" name="price" min="1000" required>
-                        </div>
-                        <span class="error-message" id="price-error"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description"><i class="fas fa-align-left"></i> Deskripsi Akun*</label>
-                        <textarea id="description" name="description" rows="4" required></textarea>
-                        <span class="error-message" id="description-error"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="whatsapp"><i class="fab fa-whatsapp"></i> Nomor WhatsApp*</label>
-                        <div class="phone-input">
-                            <span>+62</span>
-                            <input type="text" id="whatsapp" name="whatsapp" placeholder="8123456789" required>
-                        </div>
-                        <span class="error-message" id="whatsapp-error"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label><i class="fas fa-images"></i> Gambar Akun (Min 2)*</label>
-                        <div class="upload-area" id="upload-area">
-                            <div class="upload-content">
-                                <i class="fas fa-cloud-upload-alt"></i>
-                                <p>Seret & lepas gambar atau klik untuk memilih</p>
-                                <input type="file" id="images" name="images[]" multiple accept="image/*" required>
-                            </div>
-                        </div>
-                        <div class="preview-container" id="preview-container"></div>
-                        <span class="error-message" id="images-error"></span>
-                    </div>
-
-                    <div class="form-group agreement">
-                        <input type="checkbox" id="agree" name="agree" required>
-                        <label for="agree">Saya menjamin akun ini milik pribadi dan tidak melanggar ketentuan game</label>
-                        <span class="error-message" id="agree-error"></span>
-                    </div>
-
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i> Kirim Penawaran
-                    </button>
-                </form>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <p>&copy; 2023 GameHub - Platform Jual Beli Akun Game</p>
-        </footer>
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition">
+                Kirim Penawaran
+            </button>
+        </form>
     </div>
 
-    <script src="assets/js/jual-akun.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
