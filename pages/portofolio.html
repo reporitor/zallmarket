@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZALLPORTFOLIO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --dark: #0a0a0a;
+            --light: #f1faee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animasi Atom Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary) 0%, rgba(230, 57, 70, 0.1) 70%);
+            animation: float 15s infinite linear;
+            opacity: 0.6;
+        }
+
+        .particle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            background: radial-gradient(circle, var(--primary) 0%, rgba(230, 57, 70, 0.1) 70%);
+        }
+
+        .particle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: 70%;
+            animation-delay: 2s;
+            background: radial-gradient(circle, var(--secondary) 0%, rgba(29, 53, 87, 0.1) 70%);
+        }
+
+        .particle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 30%;
+            left: 50%;
+            animation-delay: 4s;
+            background: radial-gradient(circle, white 0%, rgba(255, 255, 255, 0.1) 70%);
+        }
+
+        .particle:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            top: 70%;
+            left: 30%;
+            animation-delay: 6s;
+            background: radial-gradient(circle, var(--secondary) 0%, rgba(29, 53, 87, 0.1) 70%);
+        }
+
+        .particle:nth-child(5) {
+            width: 180px;
+            height: 180px;
+            top: 40%;
+            left: 80%;
+            animation-delay: 8s;
+            background: radial-gradient(circle, white 0%, rgba(255, 255, 255, 0.1) 70%);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(50px, 50px) rotate(90deg);
+            }
+            50% {
+                transform: translate(100px, 0) rotate(180deg);
+            }
+            75% {
+                transform: translate(50px, -50px) rotate(270deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        /* Container Utama */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 0.5rem;
+            color: var(--secondary);
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Efek Mengetik */
+        .typing-container {
+            min-height: 100px;
+            margin-bottom: 2rem;
+        }
+
+        .typing-text {
+            border-right: 2px solid var(--primary);
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Bagian Konten */
+        .section {
+            background-color: rgba(10, 10, 10, 0.8);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: slideUp 1s ease-out;
+        }
+
+        .project {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--secondary);
+        }
+
+        .project:last-child {
+            border-bottom: none;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--primary);
+        }
+
+        /* Info Waktu */
+        .time-info {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background-color: rgba(10, 10, 10, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--secondary);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .time-info {
+                position: static;
+                margin-top: 1rem;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Atom -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>ZALLPORTFOLIO</h1>
+            <p>Afrizal - Digital Enthusiast from Kalimantan Timur</p>
+        </header>
+
+        <div class="section">
+            <h2>🧑 Tentang Saya</h2>
+            <div class="typing-container">
+                <p id="typing-text"></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💼 Proyek Saya</h2>
+            
+            <div class="project">
+                <h3>🔴 ZALLSTORE REAL</h3>
+                <p>Web top-up dan jual beli akun dengan desain animasi modern. Fitur: splash screen logo, slider promo, sistem login & bind akun, serta metode pembayaran transfer bank.</p>
+                <p><strong>Fokus:</strong> kenyamanan pengguna HP.</p>
+            </div>
+            
+            <div class="project">
+                <h3>⚫ ZALLSULBAR</h3>
+                <p>Situs katalog jasa dan produk lokal, didesain simpel dengan warna dominan hitam-merah.</p>
+                <p><strong>Fokus:</strong> bantu UMKM dan individu tampil online tanpa ribet.</p>
+            </div>
+            
+            <div class="project">
+                <h3>📷 PctShoot</h3>
+                <p>Brand jasa foto dengan pendekatan profesional tapi tetap ramah untuk pelajar dan anak muda. Logo bertema kamera, warna merah di atas latar hitam.</p>
+                <p><strong>Fokus:</strong> jasa foto dengan sentuhan desain modern.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧠 Cerita Pribadi</h2>
+            <p>Saya pertama kali tertarik ngoding bukan dari buku atau kelas, tapi dari rasa penasaran waktu teman kehilangan akun Free Fire. Sejak itu saya mulai belajar cara kerja bind akun, keamanan login, dan OSINT dasar.</p>
+            <p>Seiring waktu, saya mengenal Kali Linux dan mulai eksplorasi dunia pentesting secara etis — seperti mencoba memecahkan celah pada website dummy milik sendiri untuk belajar logika keamanan.</p>
+            <p>Dan anehnya, ide-ide terbaik saya sering muncul habis bangun tidur, makanya laptop saya hampir selalu standby di samping kasur 😅</p>
+        </div>
+
+        <div class="section">
+            <h2>✉️ Hubungi Saya</h2>
+            <div class="contact-links">
+                <a href="mailto:afrizal.dev@email.com" class="contact-link"><i class="fas fa-envelope"></i> afrizal.dev@email.com</a>
+                <a href="https://zallstore-real.web.app" target="_blank" class="contact-link"><i class="fas fa-globe"></i> zallstore-real.web.app</a>
+                <a href="https://wa.me/628xxxxxxxxxx" target="_blank" class="contact-link"><i class="fab fa-whatsapp"></i> 08xxxxxxxxxx</a>
+                <a href="https://instagram.com/zallportfolio" target="_blank" class="contact-link"><i class="fab fa-instagram"></i> @zallportfolio</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🛠️ Keterampilan</h2>
+            <div class="skills-container">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">PHP (dasar)</span>
+                <span class="skill">Database JSON</span>
+                <span class="skill">Desain UI/UX</span>
+                <span class="skill">OSINT</span>
+                <span class="skill">Kali Linux</span>
+                <span class="skill">Web Pentesting</span>
+                <span class="skill">Brand Identity</span>
+                <span class="skill">Mobile-First Design</span>
+            </div>
+        </div>
+
+        <div class="time-info">
+            <span id="temperature">🌡️ 27°C</span>
+            <span id="time">🕑 2:31</span>
+            <span id="date">📅 11/05/2025</span>
+        </div>
+
+        <footer>
+            <p>© 2025 ZALLPORTFOLIO. All rights reserved.</p>
+            <p>"Buat saya, coding bukan soal tren—tapi cara saya menyelesaikan masalah."</p>
+        </footer>
+    </div>
+
+    <script>
+        // Efek mengetik otomatis
+        const aboutText = "Hai, saya Afrizal — seorang pemuda dari Kalimantan Timur yang punya kebiasaan unik: ngoding langsung setelah bangun tidur.\n\nBagi saya, dunia digital bukan cuma sekadar pekerjaan atau tren, tapi sudah jadi bagian dari keseharian. Mulai dari ngulik tampilan web, utak-atik tools untuk bantu teman pulihkan akun, sampai eksplorasi keamanan website pakai Kali Linux — semua itu saya lakukan bukan karena disuruh, tapi karena saya memang suka.\n\nSaya percaya bahwa keingintahuan dan konsistensi kecil setiap hari bisa jadi kekuatan besar. Karena itu, saya terus belajar, eksperimen, dan berbagi hasil karya saya lewat berbagai proyek digital.";
+        const typingElement = document.getElementById('typing-text');
+        let i = 0;
+        let lineBreakCount = 0;
+
+        function typeWriter() {
+            if (i < aboutText.length) {
+                // Handle line breaks
+                if (aboutText.charAt(i) === '\n') {
+                    typingElement.innerHTML += '<br><br>';
+                    lineBreakCount++;
+                    i++;
+                    setTimeout(typeWriter, lineBreakCount > 1 ? 50 : 100);
+                } else {
+                    typingElement.innerHTML += aboutText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, Math.random() * 50 + 20);
+                }
+            } else {
+                // Remove cursor after typing completes
+                typingElement.style.borderRight = 'none';
+            }
+        }
+
+        // Mulai efek mengetik setelah halaman dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(typeWriter, 1000);
+            
+            // Animasi partikel
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach((particle, index) => {
+                // Set random initial positions
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.left = `${Math.random() * 100}%`;
+                
+                // Set different animation durations
+                particle.style.animationDuration = `${15 + Math.random() * 10}s`;
+            });
+        });
+
+        // Update waktu dan tanggal real-time (WIB)
+        function updateDateTime() {
+            const now = new Date();
+            
+            // Format waktu WIB (UTC+7)
+            const options = { 
+                timeZone: 'Asia/Jakarta',
+                hour: '2-digit', 
+                minute: '2-digit',
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            };
+            
+            const timeStr = now.toLocaleTimeString('id-ID', { 
+                timeZone: 'Asia/Jakarta',
+                hour: '2-digit', 
+                minute: '2-digit'
+            });
+            
+            const dateStr = now.toLocaleDateString('id-ID', { 
+                timeZone: 'Asia/Jakarta',
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+            
+            // Simulasi suhu (random antara 25-32)
+            const temp = Math.floor(Math.random() * 8) + 25;
+            
+            document.getElementById('time').textContent = `🕑 ${timeStr}`;
+            document.getElementById('date').textContent = `📅 ${dateStr}`;
+            document.getElementById('temperature').textContent = `🌡️ ${temp}°C`;
+        }
+
+        // Update setiap detik
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+    </script>
+</body>
+</html>
