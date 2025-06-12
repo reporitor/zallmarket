@@ -1,123 +1,261 @@
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #0f172a;
-    color: #e2e8f0;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
-
-/* Header Styles */
-header {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+/* Sell Page Styles */
+.sell-page {
     padding: 2rem 0;
+}
+
+.sell-header {
     text-align: center;
-    border-bottom: 2px solid #334155;
+    margin-bottom: 2rem;
 }
 
-h1 {
-    font-size: 2.5rem;
-    margin: 0;
-    background: linear-gradient(to right, #38bdf8, #818cf8);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-h2 {
-    font-size: 1.5rem;
-    color: #94a3b8;
-    margin-top: 0.5rem;
-    font-weight: 400;
-}
-
-/* Button Styles */
-.button-container {
+.sell-header h2 {
+    font-size: 2rem;
+    color: var(--primary);
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: 0.5rem;
 }
 
-.btn {
-    padding: 0.75rem 2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
+.sell-header p {
+    color: var(--gray);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.sell-form {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+}
+
+.form-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--dark-gray);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
     font-size: 1rem;
+    transition: var(--transition);
+    font-family: inherit;
 }
 
-.btn-primary {
-    background-color: #2563eb;
-    color: white;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
 }
 
-.btn-secondary {
-    background-color: #334155;
-    color: #e2e8f0;
-    box-shadow: 0 4px 15px rgba(51, 65, 85, 0.3);
+textarea {
+    min-height: 120px;
+    resize: vertical;
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+.price-input,
+.phone-input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    overflow: hidden;
 }
 
-.btn-primary:hover {
-    background-color: #1d4ed8;
+.price-input span,
+.phone-input span {
+    padding: 0 0.8rem;
+    background: #f5f5f5;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
-.btn-secondary:hover {
-    background-color: #475569;
+.price-input input,
+.phone-input input {
+    border: none;
+    flex: 1;
+    padding-left: 0.5rem;
 }
 
-/* Gaming Accent Elements */
-.divider {
-    height: 2px;
-    background: linear-gradient(to right, transparent, #38bdf8, transparent);
-    margin: 2rem auto;
-    width: 80%;
-    opacity: 0.5;
-}
-
-/* Windows Activation Notice (jika perlu dipertahankan) */
-.windows-notice {
-    font-size: 0.8rem;
-    color: #64748b;
+.upload-area {
+    border: 2px dashed #ddd;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
     text-align: center;
-    margin-top: 3rem;
-    padding: 0.5rem;
-    border-top: 1px solid #334155;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
 }
 
-/* Responsive Design */
+.upload-area:hover {
+    border-color: var(--primary);
+    background-color: rgba(67, 97, 238, 0.05);
+}
+
+.upload-content {
+    pointer-events: none;
+}
+
+.upload-content i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.upload-content p {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.upload-area input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.preview-item {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow);
+}
+
+.preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.preview-item .remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: var(--danger);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.preview-item:hover .remove-btn {
+    opacity: 1;
+}
+
+.format-info {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-top: 0.5rem;
+}
+
+.agreement {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
+
+.agreement input[type="checkbox"] {
+    width: auto;
+}
+
+.agreement label {
+    font-size: 0.9rem;
+    color: var(--dark);
+}
+
+.form-actions {
+    text-align: center;
+}
+
+.form-actions .btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-    
-    h2 {
-        font-size: 1.2rem;
-    }
-    
-    .button-container {
+    .form-row {
         flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+        gap: 0;
     }
     
-    .btn {
-        width: 80%;
-        text-align: center;
+    .sell-form {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sell-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .form-section h3 {
+        font-size: 1.2rem;
     }
 }
