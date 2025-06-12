@@ -1,104 +1,139 @@
 <?php
 header('Content-Type: application/json');
 
-// Konfigurasi
-$upload_dir = 'uploads/';
-$max_file_size = 2 * 1024 * 1024; // 2MB
-$allowed_types = ['image/jpeg', 'image/png', 'image/jpg'];
-$json_file = 'data/data-akun.json';
-
-// Fungsi untuk membuat response JSON
-function json_response($success, $message, $data = []) {
-    echo json_encode([
-        'success' => $success,
-        'message' => $message,
-        'data' => $data
-    ]);
-    exit;
-}
-
-// Validasi request
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    json_response(false, 'Metode request tidak valid');
-}
-
-// Validasi data
-$required_fields = ['game', 'username', 'level', 'items', 'bind', 'harga', 'deskripsi', 'whatsapp', 'persetujuan'];
-foreach ($required_fields as $field) {
-    if (empty($_POST[$field])) {
-        json_response(false, "Field $field harus diisi");
-    }
-}
-
-// Validasi file upload
-if (empty($_FILES['gambar_profil']) || empty($_FILES['gambar_lain'])) {
-    json_response(false, 'Harap upload kedua gambar');
-}
-
-// Proses upload gambar
-$uploaded_files = [];
-foreach (['gambar_profil', 'gambar_lain'] as $file_key) {
-    $file = $_FILES[$file_key];
-    
-    // Validasi file
-    if ($file['error'] !== UPLOAD_ERR_OK) {
-        json_response(false, 'Terjadi kesalahan saat mengupload gambar');
-    }
-    
-    if ($file['size'] > $max_file_size) {
-        json_response(false, 'Ukuran gambar terlalu besar (maks 2MB)');
-    }
-    
-    if (!in_array($file['type'], $allowed_types)) {
-        json_response(false, 'Format gambar tidak didukung (hanya JPG/PNG)');
-    }
-    
-    // Generate nama file unik
-    $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-    $filename = uniqid() . '.' . $ext;
-    $destination = $upload_dir . $filename;
-    
-    if (!move_uploaded_file($file['tmp_name'], $destination)) {
-        json_response(false, 'Gagal menyimpan gambar');
-    }
-    
-    $uploaded_files[$file_key] = $filename;
-}
-
-// Siapkan data untuk disimpan
-$akun_data = [
-    'id' => uniqid(),
-    'game' => htmlspecialchars($_POST['game']),
-    'username' => htmlspecialchars($_POST['username']),
-    'level' => (int)$_POST['level'],
-    'items' => htmlspecialchars($_POST['items']),
-    'bind' => htmlspecialchars($_POST['bind']),
-    'harga' => (int)$_POST['harga'],
-    'deskripsi' => htmlspecialchars($_POST['deskripsi']),
-    'whatsapp' => htmlspecialchars($_POST['whatsapp']),
-    'gambar_profil' => $uploaded_files['gambar_profil'],
-    'gambar_lain' => $uploaded_files['gambar_lain'],
-    'waktu_pengiriman' => date('Y-m-d H:i:s'),
-    'status' => 'Sedang Dicek',
-    'catatan_admin' => ''
+// Set response defaults
+$response = [
+    'success' => false,
+    'message' => '',
+    'errors' => []
 ];
 
-// Baca file JSON yang ada
-$existing_data = [];
-if (file_exists($json_file)) {
-    $existing_data = json_decode(file_get_contents($json_file), true);
-    if (json_last_error() !== JSON_ERROR_NONE) {
-        $existing_data = [];
+try {
+    // Check request method
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        throw new Exception('Method not allowed', 405);
     }
+
+    // Validate required fields
+    $requiredFields = [
+        'game_type', 'username', 'level', 'items',
+        'bind_status', 'price', 'description', 'whatsapp', 'agree'
+    ];
+
+    foreach ($requiredFields as $field) {
+        if (empty($_POST[$field])) {
+            $response['errors'][$field] = 'Field ini wajib diisi';
+        }
+    }
+
+    // Validate images
+    if (count($_FILES['images']['name']) < 2) {
+        $response['errors']['images'] = 'Minimal 2 gambar diperlukan';
+    }
+
+    // If there are errors, return them
+    if (!empty($response['errors'])) {
+        $response['message'] = 'Terdapat kesalahan pada form';
+        echo json_encode($response);
+        exit;
+    }
+
+    // Process image uploads
+    $uploadedImages = [];
+    $uploadDir = __DIR__ . '/../../assets/uploads/';
+
+    // Create upload directory if not exists
+    if (!file_exists($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+
+    foreach ($_FILES['images']['tmp_name'] as $key => $tmpName) {
+        // Validate image
+        $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = finfo_file($fileInfo, $tmpName);
+        finfo_close($fileInfo);
+
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+        if (!in_array($mimeType, $allowedTypes)) {
+            throw new Exception('Format gambar tidak valid (hanya JPG, PNG, WEBP)', 400);
+        }
+
+        // Check file size (max 2MB)
+        if ($_FILES['images']['size'][$key] > 2097152) {
+            throw new Exception('Ukuran gambar terlalu besar (maksimal 2MB)', 400);
+        }
+
+        // Generate unique filename
+        $ext = pathinfo($_FILES['images']['name'][$key], PATHINFO_EXTENSION);
+        $filename = 'img_' . uniqid() . '.' . $ext;
+        $destination = $uploadDir . $filename;
+
+        // Move uploaded file
+        if (!move_uploaded_file($tmpName, $destination)) {
+            throw new Exception('Gagal menyimpan gambar', 500);
+        }
+
+        // Compress image
+        compressImage($destination, $destination, 75);
+
+        $uploadedImages[] = $filename;
+    }
+
+    // Prepare account data
+    $accountData = [
+        'id' => uniqid(),
+        'game_type' => htmlspecialchars($_POST['game_type']),
+        'username' => htmlspecialchars($_POST['username']),
+        'level' => (int)$_POST['level'],
+        'items' => htmlspecialchars($_POST['items']),
+        'bind_status' => htmlspecialchars($_POST['bind_status']),
+        'price' => (float)$_POST['price'],
+        'description' => htmlspecialchars($_POST['description']),
+        'whatsapp' => '62' . ltrim($_POST['whatsapp'], '0'),
+        'images' => $uploadedImages,
+        'status' => 'Pending',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => null
+    ];
+
+    // Save to JSON file
+    $dataFile = __DIR__ . '/../../data/accounts.json';
+    $accounts = [];
+
+    if (file_exists($dataFile)) {
+        $accounts = json_decode(file_get_contents($dataFile), true);
+    }
+
+    $accounts[] = $accountData;
+    file_put_contents($dataFile, json_encode($accounts, JSON_PRETTY_PRINT));
+
+    // Success response
+    $response = [
+        'success' => true,
+        'message' => 'Akun berhasil diajukan! Admin akan memverifikasi dalam 1x24 jam.'
+    ];
+
+} catch (Exception $e) {
+    http_response_code($e->getCode() ?: 500);
+    $response['message'] = $e->getMessage();
 }
 
-// Tambahkan data baru
-$existing_data[] = $akun_data;
+echo json_encode($response);
 
-// Simpan ke file JSON
-if (file_put_contents($json_file, json_encode($existing_data, JSON_PRETTY_PRINT)) {
-    json_response(true, 'Data akun berhasil dikirim', ['redirect' => 'berhasil.html']);
-} else {
-    json_response(false, 'Gagal menyimpan data');
+// Helper function to compress images
+function compressImage($source, $destination, $quality) {
+    $info = getimagesize($source);
+
+    if ($info['mime'] == 'image/jpeg') {
+        $image = imagecreatefromjpeg($source);
+        imagejpeg($image, $destination, $quality);
+    } elseif ($info['mime'] == 'image/png') {
+        $image = imagecreatefrompng($source);
+        imagepng($image, $destination, round(9 * $quality / 100));
+    }
+
+    if (isset($image)) {
+        imagedestroy($image);
+    }
 }
 ?>
