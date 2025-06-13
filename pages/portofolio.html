@@ -415,7 +415,7 @@
 
         // Mulai efek mengetik setelah halaman dimuat
         window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(typeWriter, 1000);
+            setTimeout(typeWriter, 900);
             
             // Animasi partikel
             const particles = document.querySelectorAll('.particle');
@@ -435,7 +435,7 @@
             
             // Format waktu WIB (UTC+7)
             const options = { 
-                timeZone: 'Asia/Jakarta',
+                timeZone: 'Asia/Makassar',
                 hour: '2-digit', 
                 minute: '2-digit',
                 day: '2-digit',
@@ -444,13 +444,13 @@
             };
             
             const timeStr = now.toLocaleTimeString('id-ID', { 
-                timeZone: 'Asia/Jakarta',
+                timeZone: 'Asia/Makassar',
                 hour: '2-digit', 
                 minute: '2-digit'
             });
             
             const dateStr = now.toLocaleDateString('id-ID', { 
-                timeZone: 'Asia/Jakarta',
+                timeZone: 'Asia/Makassar',
                 day: '2-digit',
                 month: '2-digit',
                 year: 'numeric'
